@@ -1,0 +1,37 @@
+{% extends 'edms/base.html' %}
+
+{% block body %}
+<div class="container-fluid exam-container">
+    <div class="row">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <div class="panel-body  ">
+                    <h1>{{ exam.exam_type }} </h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-sm-8 col-md-9">
+    <ul class="nav nav-pills" style="margin-bottom: 10px;"></ul>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+                Exam Type
+        </div>
+
+        <div class="panel-body">
+            <h5>{{ exam.exam_information }}</h5>
+            {% if exam.exam_file %}
+                <h5><a target="_blank" href="{{ exan.exam_file.url }}">Show Course Content</a></h5>
+            {% endif %}
+            {% if exam.exam_answer_file %}
+                <h5><a target="_blank" href="{{ exan.exam_answer_file.url }}">Show Course Content</a></h5>
+            {% endif %}
+        </div>
+    </div>
+    <a href="{% url 'edms:exam-update' pk=exam.pk %}" class="btn btn-info" role="button">Update</a>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'edms/base.html' %}
+
+{% block body %}
+<div class="container-fluid">
+    <div class="row">
+        <h3 class="update2">Update Other Document</h3>
+        <div class="col-sm-12 col-md-7">
+            <div class="update">
+                <div class="panel-heading">
+                    <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="updateicerik">
+                            {% include 'edms/form_template.html' %}
+                            <div class="form-group">
+                                <div class="col-sm-9 col-md-6 col-lg-8">
+                                    <button type="submit" class="btn btn-danger">Save</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'edms/base.html' %}
+
+{% block body %}
+<div class="exams-container container-fluid">
+    <div class="row">
+        {% if user.is_authenticated %}
+        {% csrf_token %}
+            {% if exams %}
+                {% for lesson in exams %}
+                    <div class="col-sm-9 col-md-6 col-lg-8">
+                        <div class="thumbnail">
+                            <div class="caption">
+                                <a href="{% url 'edms:lesson-detail' pk=lesson.pk %}">
+                                    <h2>{{ lesson.lesson_name }}</h2>
+                                </a><br>
+                                <h5><input type="checkbox" name="vehicle1" id="1">
+                                    Course Content and Grade</h5><br>
+
+                                <h5>Examination Documents</h5> 
+                                <h5><input type="checkbox" name="vehicle2" id="2">Midterm   
+                                    <input type="checkbox" name="vehicle3" id="3">Final   
+                                    <input type="checkbox" name="vehicle4" id="4">Integrated</h5><br>
+                                
+                                <h5><input type="checkbox" name="vehicle5" id="5">
+                                    Course Evaluation Form</h5><br>
+
+                                <h5>Documents to be Taken from the System</h5>
+                                <h5><input type="checkbox" name="vehicle6" id="6">Course Survey
+                                    <input type="checkbox" name="vehicle7" id="7">Exam Note List </h5><br>
+                                
+                                <h5>All Examination Documents</h5> 
+                                <h5><input type="checkbox" name="vehicle2" id="8">Midterm   
+                                    <input type="checkbox" name="vehicle3" id="9">Final   
+                                    <input type="checkbox" name="vehicle4" id="10">Integrated
+                                    <input type="checkbox" name="vehicle2" id="8">Apology   
+                                    <input type="checkbox" name="vehicle3" id="9">Graduation   
+                                    <input type="checkbox" name="vehicle4" id="10">Homework / Report</h5><br> 
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}
