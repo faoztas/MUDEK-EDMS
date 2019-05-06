@@ -1,4 +1,4 @@
-# This file must be used with ". bin/activate.fish" *from fish* (http://fishshell.org)
+﻿# This file must be used with ". bin/activate.fish" *from fish* (http://fishshell.org)
 # you cannot run it directly
 
 function deactivate  -d "Exit virtualenv and return to normal shell environment"
@@ -29,7 +29,7 @@ end
 # unset irrelevant variables
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/home/durmus/Masaüstü/Tasarım/tenv"
+set -gx VIRTUAL_ENV "/home/faoztas/Masaüstü/Tasarım/tenv"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH

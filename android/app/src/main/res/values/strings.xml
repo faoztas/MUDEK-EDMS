@@ -17,4 +17,10 @@
     <string name="black">Black_White</string>
     <string name="reset">Reset</string>
     <string name="scan">Scan</string>
+    <string name="username">Username :</string>
+    <string name="Mudek">MÜDEK e-BYS</string>
+    <string name="mail">@ktu.edu.tr</string>
+    <string name="password">Password :</string>
+    <string name="login">LOGIN</string>
+    <string name="forgot">I forgot my password.</string>
 </resources>
