@@ -1,12 +1,12 @@
 <resources>
-    <string name="app_name">Müdek EBYS</string>
+    <string name="app_name">Müdek e-BYS</string>
     <string name="title_activity_main2">Main2Activity</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
-    <string name="camera_grant">Müdek EBYS</string>
+    <string name="camera_grant">Müdek e-BYS</string>
     <string name="press_again_logout">Press back again and logout</string>
 
     <string name="crop">Crop</string>
@@ -17,8 +17,9 @@
     <string name="black">Black_White</string>
     <string name="reset">Reset</string>
     <string name="scan">Scan</string>
+
     <string name="username">Username :</string>
-    <string name="Mudek">MÜDEK e-BYS</string>
+    <string name="Mudek">Müdek e-BYS</string>
     <string name="mail">@ktu.edu.tr</string>
     <string name="password">Password :</string>
     <string name="login">LOGIN</string>

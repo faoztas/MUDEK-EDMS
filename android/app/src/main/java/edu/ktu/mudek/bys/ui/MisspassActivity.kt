@@ -1,13 +1,18 @@
-package edu.ktu.mudek.bys
+package edu.ktu.mudek.bys.ui
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import edu.ktu.mudek.scanner.R
 
-class LoginActivity : AppCompatActivity() {
+
+
+open class MisspassActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+        setContentView(R.layout.activity_misspass)
     }
+
+
+
 }

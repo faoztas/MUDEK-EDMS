@@ -26,8 +26,23 @@
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
+
         <activity
-            android:name="edu.ktu.mudek.bys.LoginActivity"
+            android:name="edu.ktu.mudek.bys.ui.MisspassActivity"
+            android:label="@string/Mudek"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+
+        <activity
+            android:name="edu.ktu.mudek.bys.ui.FileActivity"
+            android:label="@string/Mudek"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+
+        <activity
+            android:name="edu.ktu.mudek.bys.ui.LoginActivity"
             android:label="@string/Mudek"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"

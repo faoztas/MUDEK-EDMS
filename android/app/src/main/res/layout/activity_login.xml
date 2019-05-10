@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite">
 
     <ImageView
         android:id="@+id/imageIcon"
@@ -11,8 +11,9 @@
         android:layout_height="@android:dimen/thumbnail_height"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"        android:layout_marginStart="0dp"
-        android:layout_marginTop="50dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="0dp"
         app:srcCompat="@mipmap/ic_launcher" />
 
@@ -21,7 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/imageIcon"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="10dp"
         android:fontFamily="sans-serif-thin"
         android:text="@string/Mudek"
         android:textAlignment="center"
@@ -35,12 +36,12 @@
         android:layout_below="@+id/textMudek"
         android:layout_alignParentStart="true"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
         android:fontFamily="sans-serif-thin"
         android:text="@string/username"
         android:textAlignment="center"
         android:textColor="@color/colorTextDarkest"
-        android:textSize="25sp"
+        android:textSize="20sp"
         android:textStyle="bold" />
 
     <EditText
@@ -49,13 +50,13 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/textMudek"
         android:layout_marginStart="5dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="11dp"
         android:layout_toEndOf="@id/textUsername"
         android:fontFamily="sans-serif-thin"
-        android:textAlignment="textEnd"
+        android:hint="314012"
+        android:textAlignment="textStart"
         android:textColor="@color/colorText"
-        android:textSize="20sp"
-        android:inputType="" />
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/textMail"
@@ -64,14 +65,14 @@
         android:layout_below="@+id/textMudek"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="3dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
         android:layout_toEndOf="@id/editUsername"
         android:fontFamily="sans-serif-thin"
         android:text="@string/mail"
         android:textAlignment="center"
         android:textColor="@color/colorTextBlack"
-        android:textSize="25sp"
+        android:textSize="20sp"
         android:textStyle="italic" />
 
     <TextView
@@ -86,7 +87,7 @@
         android:text="@string/password"
         android:textAlignment="center"
         android:textColor="@color/colorTextDarkest"
-        android:textSize="25sp"
+        android:textSize="20sp"
         android:textStyle="bold" />
 
     <EditText
@@ -95,7 +96,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/textUsername"
         android:layout_marginStart="5dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="21dp"
         android:layout_marginEnd="20dp"
         android:layout_toEndOf="@id/textPassword"
         android:fontFamily="sans-serif-thin"
@@ -112,7 +113,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="20dp"
         android:background="@color/colorTextGreen"
         android:fontFamily="sans-serif-thin"
@@ -135,12 +136,12 @@
         android:layout_marginTop="30dp"
         android:layout_marginEnd="20dp"
         android:fontFamily="sans-serif-thin"
+        android:onClick="missPassword"
         android:text="@string/forgot"
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="@color/colorTextDarkest"
         android:textSize="25sp"
-        android:textStyle="bold|italic"
-        android:onClick="missPassword"/>
+        android:textStyle="bold|italic" />
 
 </RelativeLayout>
