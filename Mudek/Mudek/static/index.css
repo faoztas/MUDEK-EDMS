@@ -1,0 +1,81 @@
+html {
+    height: 100%;
+  }
+  
+  body {
+    background-image: linear-gradient(100deg, #ab00ef, #7200da);
+  }
+  
+  .logo {
+    display: block;
+    margin: 50px auto;
+  }
+  
+  #link-area {
+    text-align: center;
+  }
+  
+  .login-button {
+    width: 240px;
+    height: 60px;
+    border-radius: 5px;
+    border: solid 1px #ffffff;
+    background-color: Transparent;
+    background-repeat: no-repeat;
+    outline: none;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 20px;
+    margin: 10px 10px 10px 10px;
+  }
+  
+  .footer {
+    position: absolute;
+    padding-top: 10px;
+    text-align: center;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+  
+  .footer table {
+    border-collapse: separate;
+    width: 100%;
+  }
+  
+  .footer table td {
+    font-family: sans-serif;
+    vertical-align: top;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 12px;
+    color: #ffffff;
+    text-align: center;
+    border-bottom: none;
+  }
+  
+  .footer table span {
+    color: #ffffff;
+    font-size: 12px;
+    text-align: center;
+  }
+  
+  .footer table a {
+    text-decoration: underline;
+    color: #ffffff;
+    font-size: 12px;
+    text-align: center;
+  }
+  
+  
+  @media (max-width: 770px) {
+    .logo {
+      margin: 20px auto;
+    }
+  
+    .login-button {
+      width: 180px;
+      height: 45px;
+      font-size: 15px;
+    }
+  }

@@ -1,0 +1,164 @@
+.loginpanel{
+    background-color: rgb(30, 30, 60);
+    margin-top: 18%;
+    margin-left: 39%; 
+    margin-right: 38%;
+}
+
+.loginicerik{
+    color: rgb(85, 85, 134);
+    font-family: 'Rajdhani';
+    margin-top: 8%;
+    margin-left: 5%; 
+    margin-right: -20%;
+}
+
+.loginpage {
+    color: whitesmoke ;
+    margin-left: 23%; 
+    margin-right: -20%;
+}
+
+.btn-login {
+
+    background-color: rgb(85, 85, 134);
+    margin-left: 22%;
+    width: 48%;
+    color: white;
+    margin-bottom: 3%
+}
+
+.loginform {
+    margin-top: 3%;
+    margin-left: 5%;
+    color: rgb(85, 85, 134)
+}
+
+.lessonbody{
+    margin-left: 5%;
+    background-color: rgb(172, 166, 172);
+    margin-bottom: 2%;
+}
+
+.lessoncaption {
+    margin-left: 20%; 
+    margin-right: 20%;
+    background-color: rgb(172, 166, 172);
+}
+
+.lessontitle {
+    margin-left: 6%;
+}
+
+.lessontop {
+    margin-bottom: 6%;
+
+}
+
+.lessonheader {
+    background-color: rgb(42, 42, 80);
+    color: rgb(43, 23, 23);
+    font-family: 'Rajdhani';
+    font-style: oblique;
+    margin-left: 28%;
+}
+
+.btn-primary {
+    margin-left: 58%;
+    color: white;
+    width: 24%;
+    
+}
+
+.panel-body{
+    background-color: rgb(172, 166, 172);
+}
+
+.panel {
+    background-color: rgb(42, 42, 80);
+    color: rgb(43, 23, 23);
+    font-family: 'Rajdhani';
+    margin-left: 31%;
+    margin-right: -10%;
+}
+
+.update {
+    background-color: rgb(243, 243, 247);
+    color: rgb(43, 23, 23);
+    font-family: 'Rajdhani';
+    margin-inline-start: 0%;
+    margin-inline-end: -30%;
+    margin-left: 25%;
+    margin-right: -45%;
+}
+
+.update2 {
+    color: rgb(221, 209, 209);
+    margin-left: 39%; 
+}
+
+.updateicerik {
+    margin-left: 18%; 
+    margin-right: 10%;
+}
+
+
+
+
+.btn-danger {
+    margin-left: 45%;
+    color: white;
+    
+}
+
+.btn-primary2 {
+    background-color: blue;
+    margin-left: 8%;
+    color: white;
+    
+}
+
+body {
+    background-color: rgb(42, 42, 80);
+    margin: 0;
+}
+
+h1  {
+    color: rgb(221, 201, 201);
+    font-family: 'Anton';
+    margin-inline-start: 10%;
+}
+
+h2  {
+    color: rgb(8, 8, 8);
+    font-family: 'Anton';
+    margin-inline-start:5%;
+}
+
+h4 {
+    margin-top: 5%;
+    color: rgb(156, 107, 113);
+    font-size: 25pt;
+    font-family: 'Rajdhani';
+    margin-inline-start:25%;
+}
+
+
+h3 {
+    color: rgb(156, 107, 113);
+    font-size: 35pt;
+    font-family: 'Rajdhani';
+    margin-inline-start:25%;
+}
+
+h5 {
+    color: rgb(27, 11, 13);
+    font-size: 15pt;
+    font-family: 'Rajdhani';
+    margin-inline-start:5%;
+    margin: 3%;
+}
+
+.exam {
+    margin-block-start: 2%
+}

@@ -1,0 +1,12 @@
+{% extends 'edms/base.html' %}
+
+{% block body %}
+    <div class="loginpanel">
+        <form method="post" class="loginicerik">
+            {% csrf_token %}
+            <h4 class="loginpage">Login Page</h4>
+            <div class="loginform">{{ form.as_p }}</div>
+            <button class = "btn btn-login" type="submit">Login</button>
+        </form>
+    </div>
+{% endblock %}

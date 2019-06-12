@@ -1,0 +1,26 @@
+{% extends 'edms/base.html' %}
+
+{% block body %}
+<div class="lessons-container container-fluid">
+    <div class="row">
+        {% if lessons %}
+            {% for key, lesson in lessons.items %}
+                <div class="lessoncaption">
+                    <div class="lessonbody">
+                        <a class="lessontitle" href="{% url 'edms:lesson-detail' pk=lesson.lesson.pk %}">
+                            <h2>{{ lesson.lesson.lesson_name }}</h2>
+                        </a>
+                        {% for request in lesson.docs %}
+                            <ul>
+                                <input {% if request.d_bool %}checked="checked"{% endif %} type="checkbox"/>
+                                <a href="{% url 'edms:requsted-update' pk=request.pk %}" role="button">{{ request.d_name }}</a>
+                            </ul>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}

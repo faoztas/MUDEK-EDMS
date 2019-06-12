@@ -1,0 +1,26 @@
+{% extends 'edms/base.html' %}
+
+{% block body %}
+<div class="exams-container container-fluid">
+    <div class="row">
+        {% if user.is_authenticated %}
+        {% csrf_token %}
+            {% if lessons %}
+                {% for lesson in lessons %}
+                    <div class="col-sm-9 col-md-6 col-lg-8">
+                        <div class="thumbnail">
+                            <div class="caption">
+                                
+                                <a href="{% url 'edms:lesson-detail' pk=lesson.pk %}">
+                                    <h2>{{ lesson.lesson_name }}</h2>
+                                </a><br>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}
