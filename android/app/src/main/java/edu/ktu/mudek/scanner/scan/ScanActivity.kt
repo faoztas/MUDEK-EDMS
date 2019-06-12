@@ -6,7 +6,7 @@ import android.support.v4.content.ContextCompat
 import android.util.Log
 import android.view.Display
 import android.view.SurfaceView
-import edu.ktu.mudek.scanner.R
+import edu.ktu.mudek.R
 import edu.ktu.mudek.scanner.base.BaseActivity
 import edu.ktu.mudek.scanner.view.PaperRectangle
 

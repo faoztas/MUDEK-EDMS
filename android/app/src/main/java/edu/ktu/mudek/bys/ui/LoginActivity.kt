@@ -7,7 +7,7 @@ import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.EditText
 import android.widget.TextView
-import edu.ktu.mudek.scanner.R
+import edu.ktu.mudek.R
 
 
 
@@ -20,7 +20,7 @@ open class LoginActivity : AppCompatActivity() {
 
     fun login(view: View) {
 
-        val intent = Intent(this, FileActivity::class.java)
+        val intent = Intent(this, MainActivity::class.java)
         val editText = findViewById<EditText>(R.id.editUsername)
         val mesaj = editText.text.toString()
         intent.putExtra(EXTRA_MESSAGE, mesaj)

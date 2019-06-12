@@ -1,7 +1,7 @@
 package edu.ktu.mudek.scanner.crop
 
 import android.widget.ImageView
-import edu.ktu.mudek.scanner.R
+import edu.ktu.mudek.R
 import edu.ktu.mudek.scanner.base.BaseActivity
 import edu.ktu.mudek.scanner.view.PaperRectangle
 import kotlinx.android.synthetic.main.activity_crop.*
