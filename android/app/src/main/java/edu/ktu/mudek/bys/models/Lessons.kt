@@ -1,65 +1,21 @@
 package edu.ktu.mudek.bys.models
 
-import com.google.gson.annotations.Expose
+
 import com.google.gson.annotations.SerializedName
 
-class Lessons {
-
-    @SerializedName("id")
-    @Expose
-    var id: Int? = null
-    @SerializedName("user")
-    @Expose
-    var user: Int? = null
-    @SerializedName("lesson_name")
-    @Expose
-    var lessonName: String? = null
-    @SerializedName("lesson_content")
-    @Expose
-    var lessonContent: String? = null
-    @SerializedName("lesson_content_file")
-    @Expose
-    var lessonContentFile: String? = null
-    @SerializedName("lesson_notes")
-    @Expose
-    var lessonNotes: String? = null
-    @SerializedName("lesson_notes_file")
-    @Expose
-    var lessonNotesFile: Any? = null
-
-    fun withId(id: Int?): Lessons {
-        this.id = id
-        return this
-    }
-
-    fun withUser(user: Int?): Lessons {
-        this.user = user
-        return this
-    }
-
-    fun withLessonName(lessonName: String): Lessons {
-        this.lessonName = lessonName
-        return this
-    }
-
-    fun withLessonContent(lessonContent: String): Lessons {
-        this.lessonContent = lessonContent
-        return this
-    }
-
-    fun withLessonContentFile(lessonContentFile: String): Lessons {
-        this.lessonContentFile = lessonContentFile
-        return this
-    }
-
-    fun withLessonNotes(lessonNotes: String): Lessons {
-        this.lessonNotes = lessonNotes
-        return this
-    }
-
-    fun withLessonNotesFile(lessonNotesFile: Any): Lessons {
-        this.lessonNotesFile = lessonNotesFile
-        return this
-    }
-
-}
+data class Lessons(
+        @SerializedName("id")
+        val id: Int?, // 3
+        @SerializedName("lesson_content")
+        val lessonContent: String?,
+        @SerializedName("lesson_content_file")
+        val lessonContentFile: String?, // http://127.0.0.1:8000/media/user_2/BMD_Sistem_Modelleri.doc
+        @SerializedName("lesson_name")
+        val lessonName: String?, // Bilgisayar Organizasyon Lab
+        @SerializedName("lesson_notes")
+        val lessonNotes: String?,
+        @SerializedName("lesson_notes_file")
+        val lessonNotesFile: Any?, // null
+        @SerializedName("user")
+        val user: Int? // 2
+)

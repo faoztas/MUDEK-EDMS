@@ -21,7 +21,7 @@ open class LoginActivity : AppCompatActivity() {
     fun login(view: View) {
 
         val intent = Intent(this, FileActivity::class.java)
-        val editText = findViewById(R.id.editUsername) as EditText
+        val editText = findViewById<EditText>(R.id.editUsername)
         val mesaj = editText.text.toString()
         intent.putExtra(EXTRA_MESSAGE, mesaj)
         startActivity(intent)
@@ -30,10 +30,11 @@ open class LoginActivity : AppCompatActivity() {
     fun missPassword(view: View) {
 
         val intent = Intent(this, MisspassActivity::class.java)
-        val textView = findViewById(R.id.textMissPassword) as TextView
+        val textView = findViewById<TextView>(R.id.textMissPassword)
         val mesaj = textView.text.toString()
         intent.putExtra(EXTRA_MESSAGE, mesaj)
         startActivity(intent)
+
 
     }
 
