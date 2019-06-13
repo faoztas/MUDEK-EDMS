@@ -26,7 +26,7 @@ public abstract class CameraGLRendererBase implements GLSurfaceView.Renderer, Su
     private final String vss = ""
             + "attribute vec2 vPosition;\n"
             + "attribute vec2 vTexCoord;\n" + "varying vec2 texCoord;\n"
-            + "void main() {\n" + "  texCoord = vTexCoord;\n"
+            + "void main2() {\n" + "  texCoord = vTexCoord;\n"
             + "  gl_Position = vec4 ( vPosition.x, vPosition.y, 0.0, 1.0 );\n"
             + "}";
 
@@ -35,14 +35,14 @@ public abstract class CameraGLRendererBase implements GLSurfaceView.Renderer, Su
             + "precision mediump float;\n"
             + "uniform samplerExternalOES sTexture;\n"
             + "varying vec2 texCoord;\n"
-            + "void main() {\n"
+            + "void main2() {\n"
             + "  gl_FragColor = texture2D(sTexture,texCoord);\n" + "}";
 
     private final String fss2D = ""
             + "precision mediump float;\n"
             + "uniform sampler2D sTexture;\n"
             + "varying vec2 texCoord;\n"
-            + "void main() {\n"
+            + "void main2() {\n"
             + "  gl_FragColor = texture2D(sTexture,texCoord);\n" + "}";
 
     // coord-s
