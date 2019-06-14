@@ -6,7 +6,6 @@ from rest_framework import routers
 
 # Local Django
 from users.api_views import UserViewSet
-# from core.api_views import ContactViewSetV1
 from edms.api_views import (
     LessonViewSet, ExamViewSet, Other_DocumentViewSet, Requested_DocumentsViewSet
 )
@@ -15,7 +14,6 @@ from edms.api_views import (
 router_L = routers.DefaultRouter()
 
 LIST_LINKS = [
-    # (r'contacts', ContactViewSetV1, 'contacts'),
     (r'users', UserViewSet, 'users'),
     (r'lessons', LessonViewSet, 'lessons'),
     (r'exams', ExamViewSet, 'exams'),

@@ -1,0 +1,31 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+<div class="container-fluid">
+    <div class="navbar-header">
+    <a class="navbar-brand" href="{% url 'edms:lesson-list' %}">
+        <span class="glyphicon glyphicon-duplicate" aria-hidden="true">
+        </span>&nbsp; EDMS</a>
+    </a>
+    </div>
+    {% if user.is_authenticated %}
+        <ul class="nav navbar-nav navbar-right">
+            <li class=""><a href="{% url 'edms:password_change' %}">
+                <span class="glyphicon glyphicon-lock" aria-hidden="true">
+                </span>&nbsp; Change Password</a>
+            </li>
+            <li class=""><a href="{% url 'edms:logout' %}">
+                <span class="glyphicon glyphicon-off" aria-hidden="true">
+                </span>&nbsp; Logout</a>
+            </li>
+            
+        </ul>
+        {% endif %}
+        <form class="navbar-form navbar-left" role="search" method="GET" action="">
+            <div class="input-group">
+                <input class="form-control" type="text" name="q" placeholder="Search" value="{{ request.GET.q }}" >
+                <span class="input-group-btn">
+                    <input class="btn btn-default" type="submit" value="Search">
+                </span>
+            </div>
+        </form>
+</div>
+</nav>

@@ -1,23 +1,28 @@
 # Django
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
-import datetime
 from django.utils import timezone
+from django.urls import reverse
+import datetime
 
+from ckeditor.fields import RichTextField
 
 class Lesson(models.Model):
     user = models.ForeignKey(
-        verbose_name=_('User'), to='users.User', on_delete=models.CASCADE
+        verbose_name=_('User'),
+        to='users.User',
+        on_delete=models.CASCADE,
+        related_name='lessons'
     )
     lesson_name = models.CharField(verbose_name=_('Ders Adı'), max_length=150)
-    lesson_content = models.TextField(
+    lesson_content = RichTextField(
         verbose_name=_('Ders İçeriği'),
         blank=True
     )
     lesson_content_file = models.FileField(
         verbose_name=_('Ders İçeriği Dosya'), blank=True, null=True
     )
-    lesson_notes = models.TextField(verbose_name=_('Ders Notu'), blank=True)
+    lesson_notes = RichTextField(verbose_name=_('Ders Notu'), blank=True)
     lesson_notes_file = models.FileField(
         verbose_name=_('Ders Notu Dosya'),
         blank=True, null=True
@@ -27,6 +32,7 @@ class Lesson(models.Model):
         return '{lesson_name}'.format(
             lesson_name=self.lesson_name
         )
+
 
     class Meta:
         verbose_name = 'Lesson'
@@ -38,9 +44,9 @@ class Exam(models.Model):
         Lesson,
         on_delete=models.CASCADE
     )
-    exam_type = models.CharField(verbose_name=_('Sınav Türü'), max_length=50)
-    exam_information = models.TextField(
-        verbose_name=_('Sınav Hakkında Bilgi'), max_length=500)
+    exam_type = models.CharField(verbose_name=_('Sınav Türü'), max_length=50, blank=True, null=True)
+    exam_information = RichTextField(
+        verbose_name=_('Sınav Hakkında Bilgi'), max_length=500, blank=True, null=True)
     exam_file = models.FileField(
         verbose_name=_('Sınav Kağıdı Dosya'), blank=True, null=True
     )

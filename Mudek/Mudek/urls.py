@@ -12,6 +12,7 @@ from Mudek.views import ActivationView, ResetPasswordView
 urlpatterns = [
     # Admin
     path('admin/', admin.site.urls),
+    
 
     # Api
     path('', include('Mudek.api_urls')),
