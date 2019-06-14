@@ -1,38 +1,17 @@
 # Django
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
-from django.http import HttpResponseRedirect
-from django.views.generic import TemplateView, ListView, DetailView
+from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView
 from django.views import View
 from django.db.models import Q
-from django.views.generic.edit import FormView
-from django.contrib.auth.forms import UserCreationForm
+
+
 
 # Local
 from edms.models import Lesson, Exam, Other_Document, Requested_Documents
 from users.models import User
 from edms.forms import Requested_DocumentsForm
-
-class MySignUpView(View):
-    form_class = UserCreationForm
-    template_name = 'registration/sign_up.html'
-    def get(self, request, *args, **kwargs):
-        form = self.form_class()
-        return render(request, self.template_name, {'form': form})
-    def post(self, request, *args, **kwargs):
-        form = self.form_class(request.POST)
-        if form.is_valid():
-            # <process form cleaned data>
-            u = User.objects.create_user(
-                    form.cleaned_data.get('username'),
-                    '',# request.POST['email'],
-                    form.cleaned_data.get('password1'),
-                    is_active = True
-            )
-            # TODO Display message and redirect to login
-            return HttpResponseRedirect('/accounts/login/?next=/')
-        return render(request, self.template_name, {'form': form})
 
 
 class LessonListView(ListView):
