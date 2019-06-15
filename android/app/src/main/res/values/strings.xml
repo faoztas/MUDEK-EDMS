@@ -20,7 +20,7 @@
 
     <string name="username">Username :</string>
     <string name="Mudek">Müdek e-BYS</string>
-    <string name="mail">@ktu.edu.tr</string>
+    <string name="mail">(@)ktu.edu.tr</string>
     <string name="password">Password :</string>
     <string name="login">LOGIN</string>
     <string name="forgot">I forgot my password.</string>
@@ -35,6 +35,5 @@
     <string name="menu_tools">Tools</string>
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
-    <string name="title_lessonıtems_list">LessonItems</string>
-    <string name="title_lessonıtems_detail">LessonItems Detail</string>
+    <string name="logout">Logout</string>
 </resources>

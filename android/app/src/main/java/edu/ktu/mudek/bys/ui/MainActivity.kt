@@ -1,91 +1,114 @@
 package edu.ktu.mudek.bys.ui
 
+import android.content.Intent
 import android.os.Bundle
-import android.support.design.widget.FloatingActionButton
-import android.support.design.widget.Snackbar
+import android.provider.AlarmClock
+import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
-import android.view.MenuItem
-import android.support.v4.widget.DrawerLayout
-import android.support.design.widget.NavigationView
 import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.Toolbar
 import android.view.Menu
+import android.view.MenuItem
+import android.widget.Toast
 import edu.ktu.mudek.R
+import edu.ktu.mudek.bys.fragment.HomeFragment
+import edu.ktu.mudek.bys.fragment.SettingsFragment
+import edu.ktu.mudek.bys.fragment.DocFragment
+import edu.ktu.mudek.scanner.scan.ScanActivity
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.app_bar_main.*
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
 
-        val fab: FloatingActionButton = findViewById(R.id.fab)
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
-        }
-        val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
-        val navView: NavigationView = findViewById(R.id.nav_view)
+        supportFragmentManager.beginTransaction().replace(R.id.relativelayout, HomeFragment()).commit()
+
         val toggle = ActionBarDrawerToggle(
-                this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
-        drawerLayout.addDrawerListener(toggle)
+                this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
+        drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
 
-        navView.setNavigationItemSelectedListener(this)
+        nav_view.setNavigationItemSelectedListener(this)
+
+        displayScreen(-1)
     }
 
     override fun onBackPressed() {
-        val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-            drawerLayout.closeDrawer(GravityCompat.START)
+        if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
+            drawer_layout.closeDrawer(GravityCompat.START)
         } else {
             super.onBackPressed()
         }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.main, menu)
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        return when (item.itemId) {
-            R.id.action_settings -> true
-            else -> super.onOptionsItemSelected(item)
+        when (item.itemId) {
+            R.id.action_logout -> {
+                val intent = Intent(this, LoginActivity::class.java)
+                intent.putExtra(AlarmClock.EXTRA_MESSAGE, "Login Activity Open")
+                startActivity(intent)
+                return true
+            }
+            else -> {
+                return super.onOptionsItemSelected(item)
+            }
+        }
+    }
+
+    fun displayScreen(id: Int){
+
+        // val fragment =  when (id){
+
+        when (id){
+            R.id.nav_home -> {
+                supportFragmentManager.beginTransaction().replace(R.id.relativelayout, HomeFragment()).commit()
+            }
+
+            R.id.nav_scanCrop -> {
+                val intent = Intent(this, ScanActivity::class.java)
+                intent.putExtra(AlarmClock.EXTRA_MESSAGE, "Scan Activity Open")
+                startActivity(intent)
+            }
+
+            R.id.nav_doc -> {
+                supportFragmentManager.beginTransaction().replace(R.id.relativelayout, DocFragment()).commit()
+            }
+
+            R.id.nav_notifications -> {
+                Toast.makeText(this, "Clicked Notifications", Toast.LENGTH_SHORT).show()
+            }
+
+            R.id.nav_settings -> {
+                supportFragmentManager.beginTransaction().replace(R.id.relativelayout, SettingsFragment()).commit()
+            }
+
+            R.id.nav_aboutUs -> {
+                Toast.makeText(this, "Clicked About Us", Toast.LENGTH_SHORT).show()
+            }
+
+            R.id.nav_privacyPolicy -> {
+                Toast.makeText(this, "Clicked Privacy Policy", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
-        when (item.itemId) {
-            R.id.nav_home -> {
-                // Handle the camera action
-            }
-            R.id.nav_gallery -> {
 
-            }
-            R.id.nav_slideshow -> {
+        displayScreen(item.itemId)
 
-            }
-            R.id.nav_tools -> {
-
-            }
-            R.id.nav_share -> {
-
-            }
-            R.id.nav_send -> {
-
-            }
-        }
-        val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
-        drawerLayout.closeDrawer(GravityCompat.START)
+        drawer_layout.closeDrawer(GravityCompat.START)
         return true
     }
+
+
 }

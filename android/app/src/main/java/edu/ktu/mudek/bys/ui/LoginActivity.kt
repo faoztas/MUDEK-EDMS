@@ -29,7 +29,7 @@ open class LoginActivity : AppCompatActivity() {
     }
     fun missPassword(view: View) {
 
-        val intent = Intent(this, MisspassActivity::class.java)
+        val intent = Intent(this, MissPassActivity::class.java)
         val textView = findViewById<TextView>(R.id.textMissPassword)
         val mesaj = textView.text.toString()
         intent.putExtra(EXTRA_MESSAGE, mesaj)
