@@ -1,23 +1,23 @@
 # Django
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views.generic import ListView, DetailView
-from django.views.generic.edit import CreateView, UpdateView
-from django.views import View
-from django.db.models import Q
-
+from django.views.generic.edit import UpdateView
 
 
 # Local
 from edms.models import Lesson, Exam, Other_Document, Requested_Documents
 from users.models import User
-from edms.forms import Requested_DocumentsForm
+
+
 
 
 class LessonListView(ListView):
     model = Lesson
     template_name = 'edms/lesson/list.html'
+    paginate_by = 3
 
+   
     def get(self, request):
         user = request.user
         
@@ -37,7 +37,7 @@ class LessonListView(ListView):
             for doc in documnets:
                 lesson_id = str(doc.lesson.id)
                 lessons[lesson_id]['docs'].append(doc)
-
+            
             return render(request, self.template_name, {
                 'lessons': lessons,
             })
@@ -103,8 +103,7 @@ class LessonListView(ListView):
             })
         else:
             return redirect(reverse('edms:home'))       
-
-
+    
 class LessonDetailView(DetailView):
     model = Lesson
     template_name = 'edms/lesson/detail.html'
@@ -136,15 +135,6 @@ class OtherDocumentUpdateView(UpdateView):
     ]
     success_url = "/lessons"
 
-
-class OtherDocumentCreateView(CreateView):
-    model = Other_Document
-    template_name = 'edms/other/update.html'
-    fields = [
-        'course_evaluation_form', 'course_survey', 'exam_note_list_midterm',
-        'exam_note_list_end_of_term', 'exam_note_list_Integrated'
-    ]
-    success_url = "/lessons"
 
 class RequstedDocumentsUpdateView(UpdateView):
     model = Requested_Documents

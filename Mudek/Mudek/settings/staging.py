@@ -42,26 +42,22 @@ AUTH_PASSWORD_VALIDATORS = [
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'edmsdb',
+#         'USER': 'mudekedms',
+#         'PASSWORD': 'test',
+#         'HOST': 'localhost',
+#         'PORT': '',
+#     }
+# }
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
-
-# Domain
-
-DOMAIN_BACKEND = 'https://'
-DOMAIN_FRONTEND = 'https://'
-
-
-# Source Code
-
-SOURCE_CODE_BACKEND = 'https://github.com/'
-SOURCE_CODE_FRONTEND = 'https://github.com/'
-SOURCE_CODE_MOBILE = 'https://github.com/'
-
 
 # Email
 

@@ -1,14 +1,17 @@
 # Third-Party
 from rest_framework import serializers
 from django.utils.translation import ugettext_lazy as _
+from djoser.serializers import TokenCreateSerializer
 
 # Django
 from django.conf import settings
 from django.contrib.auth import password_validation
 
-# Local Django
 from users.models import User
 
+
+class TokenCreateSerializer(TokenCreateSerializer):
+    pass
 
 class UserSerializer(serializers.ModelSerializer):
 

@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 
 import os
 
+#  Local Django
+from .secret import SECRET_KEY
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -20,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '9c4d7&e=%jc&7do3j7f8x@h79a_-vk&23_xpn0afj12u3wc1d='
+SECRET_KEY = SECRET_KEY
 
 # Application definition
 
@@ -38,6 +41,8 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'djoser',
     'corsheaders',
+    'ckeditor',
+    'crispy_forms',
 
     # Internal Applications
     'edms',
@@ -53,7 +58,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'Mudek.settings.middleware.LoginRequiredMiddleware',
 ]
 
 ROOT_URLCONF = 'Mudek.urls'
@@ -93,7 +97,8 @@ USE_L10N = True
 USE_TZ = True
 
 
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/lessons'
+
 LOGOUT_REDIRECT_URL = '/login/'
 
 LOGIN_URL = 'login/'
@@ -101,10 +106,6 @@ LOGIN_URL = 'login/'
 LOGIN_EXEMPT_URLS = (
     'logout/',
     'register/',
-    'reset-password/',
-    'reset-password/done/',
-    'reset-password/confirm/<uidb64>/<token>/',
-    'reset-password/complete/',
     'change-password',
     'password_change/done/'
 )
@@ -115,11 +116,31 @@ LOGIN_EXEMPT_URLS = (
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static"),]
-
+#STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+# ckeditor
+CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'Custom',
+        'toolbar_Custom': [
+            ['Bold', 'Italic', 'Underline'],
+            ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
+            ['Link', 'Unlink'],
+            ['RemoveFormat', 'Source']
+        ]
+    },
+}
+
+# Domain
+DOMAIN_BACKEND = 'http://127.0.0.1:8000'
+
+# Email
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 from .app_settings import *

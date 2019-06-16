@@ -2,9 +2,14 @@
 from rest_framework.response import Response
 from rest_framework import viewsets, mixins, status
 from rest_framework.decorators import detail_route, list_route
+from djoser.views import TokenCreateView
+from djoser import utils
 
 # Django
 from django.core.mail import send_mail
+from djoser.conf import settings
+
+
 
 # Local Django
 from users.models import User, ActivationKey
@@ -13,8 +18,18 @@ from users.serializers import (
     UserSerializer, UserListSerializer, UserCreateSerializer,
     UserRetrieveSerializer, UserUpdateSerializer,
     UserPasswordChangeSerializer, UserPasswordForgotSerializer,
-    UserActivationResendSerializer
+    UserActivationResendSerializer, TokenCreateSerializer
 )
+
+class TokenCreateView(TokenCreateView):
+    serializer_class = TokenCreateSerializer
+
+    def _action(self, serializer):
+        token = utils.login_user(self.request, serializer.user)
+        token_serializer_class = settings.SERIALIZERS.token
+        return Response(
+            data=token_serializer_class(token).data, status=status.HTTP_200_OK
+        )
 
 
 class UserViewSet(mixins.ListModelMixin,

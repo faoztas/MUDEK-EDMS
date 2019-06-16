@@ -1,0 +1,46 @@
+{% extends "admin/base_site.html" %}
+
+{% load i18n staticfiles %}
+
+
+{% block title %}{{ title }} {% if title %}|{% endif %} Mudek Edms{% endblock %}
+
+{% block extrastyle %}
+  {{ block.super }}
+
+  <link rel="shortcut icon" type="image/png" href="{% static 'img/icons/favicon.png' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'css/admin/base.css' %}">
+{% endblock %}
+
+{% block branding %}
+  {% if not request.user.is_authenticated %}
+    <div style="float: none; text-align:center; line-height: normal;">
+      <a href="{% url 'admin:index' %}">
+        <img src="{% static 'img/logos/logo.png' %}" alt="logo" height="48">
+      </a>
+    </div>
+  {% else %}
+    <div style="float: left;">
+      <a href="{% url 'admin:index' %}">
+        <img src="{% static 'img/logos/logo.png' %}" alt="logo" height="48" style="margin-top: -5px;">
+      </a>
+    </div>
+  {% endif %}
+{% endblock %}
+
+{% block nav-global %}{% endblock %}
+
+{% block footer %}
+  <div class="footer" id="footer">
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+          <td valign="top" align="center">
+            <span>
+              {% blocktrans trimmed %}Mudek Edms is a Durmuş Yaşar & Furkan Anıl Öztaş product.{% endblocktrans %}
+            </span>
+            <br> <span>2018 ©</span>
+          </td>
+        </tr>
+      </table>
+  </div>
+{% endblock %}

@@ -1,0 +1,33 @@
+# Django
+Django==2.1.7
+
+# Django Rest Framework
+djangorestframework==3.9.1
+djoser==1.4.0
+
+
+# Celery
+celery==4.3.0
+# amqp==2.4.1
+# billiard==3.5.0.5
+# kombu==4.3.0
+# pytz==2018.9
+# vine==1.2.0
+
+# Django Cors Headers
+django-cors-headers==2.4.1
+
+# Ck Editor
+django-ckeditor==5.7.1
+# django-js-asset==1.2.2
+# pkg-resources==0.0.0
+
+
+# Crispy Form
+django-crispy-forms==1.7.2
+
+# Django Filter
+django-filter==2.1.0
+
+# Template Mail
+django-templated-mail==1.1.1

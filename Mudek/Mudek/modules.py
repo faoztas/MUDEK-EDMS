@@ -15,7 +15,7 @@ from django.utils.translation import ugettext_lazy as _
 
 # Local Django
 from users.models import ActivationKey, ResetPasswordKey
-
+from Mudek.tasks import mail_task
 
 class ActivationKeyModule(object):
 
@@ -130,30 +130,3 @@ class MailModule(object):
         }
 
         mail_task.delay(context, 'forgot-password')
-
-    @staticmethod
-    def send_contact_mail(contact, user):
-        template_context = {
-            'domain': settings.DOMAIN_BACKEND,
-            'full_name': user.get_full_name(),
-            'contact_url': settings.DOMAIN_BACKEND + reverse(
-                'admin:core_contact_change', args=[contact.id]
-            )
-        }
-        context = {
-            'subject': _('New Contact'),
-            'message': _(
-                "Mudek\n"
-                "Hello, {full_name}\n"
-                "New Contact = {contact_url}\n").format(
-                    full_name=template_context.get('full_name', ''),
-                    contact_url=template_context.get('contact_url', '')
-                ),
-            'html_message': render_to_string(
-                'mail/contact-mail.html', template_context
-            ),
-            'from_email': settings.DEFAULT_FROM_EMAIL,
-            'recipient_list': [user.email]
-        }
-
-        mail_task.delay(context, 'contact')

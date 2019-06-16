@@ -1,1 +1,1 @@
-# CELERY_BROKER_URL = 'amqp://guest@localhost:5672/doit_vhost'
+# CELERY_BROKER_URL = 'amqp://guest@localhost:5672/mudekedms_vhost'

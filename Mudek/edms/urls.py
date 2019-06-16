@@ -14,6 +14,7 @@ app_name = 'edms'
 
 urlpatterns = [
     # Lesson Links
+    path('', LessonListView.as_view(), name='lesson-list'),
     path('lessons', LessonListView.as_view(), name='lesson-list'),
     # path('complete/', complete, name='complete'),
     path('lessons/<int:pk>', LessonDetailView.as_view(), name='lesson-detail'),

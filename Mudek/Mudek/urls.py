@@ -7,17 +7,17 @@ from django.conf.urls.static import static
 
 # Local Django
 from Mudek.views import ActivationView, ResetPasswordView
-
+from users.api_views import TokenCreateView
 
 urlpatterns = [
     # Admin
     path('admin/', admin.site.urls),
     
-
     # Api
     path('', include('Mudek.api_urls')),
 
     # Token
+    path('auth/login/', TokenCreateView.as_view(), name='login'),
     path('auth/', include('djoser.urls.authtoken')),
 
     # Activation and Password Operations

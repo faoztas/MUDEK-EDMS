@@ -1,0 +1,45 @@
+{% extends "admin/base_site.html" %}
+
+{% load i18n admin_static staticfiles %}
+
+
+{% block extrastyle %}
+  <link rel="stylesheet" type="text/css" href="{% static 'admin/css/login.css' %}">
+
+  {{ block.super }}
+  {{ form.media }}
+{% endblock %}
+
+{% block bodyclass %}{{ block.super }} login{% endblock %}
+
+{% block usertools %}{% endblock %}
+
+{% block branding %}
+  <div style="float: none; text-align: center; line-height: normal;">
+    <img src="{% static 'img/logos/logo.png' %}" alt="logo" height="48">
+  </div>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}
+
+{% block content_title %}{% endblock %}
+
+{% block breadcrumbs %}{% endblock %}
+
+{% block content %}
+  {% if activation_key %}
+    <p class="errornote" style="color:#33CC00; border: 1px solid #33CC00; text-align: center;">
+      {{ activation_message }}
+
+      {% if domain_frontend %}
+        <br> <a style="text-align: center;" href="{{ domain_frontend }}">
+          {% trans 'Log in' %}
+        </a>
+      {% endif %}
+    </p>
+  {% else %}
+    <p class="errornote" style="text-align: center;">
+      {{ activation_message }}
+    </p>
+  {% endif %}
+{% endblock %}

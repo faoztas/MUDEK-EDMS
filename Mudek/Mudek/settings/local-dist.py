@@ -4,7 +4,7 @@ from .base import *
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/validators/
@@ -23,7 +23,6 @@ DATABASES = {
 
 # Domain
 DOMAIN_BACKEND = 'http://127.0.0.1:8000'
-DOMAIN_FRONTEND = 'http://localhost:3000'
 
 # Email
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
