@@ -28,7 +28,9 @@ class ActivationView(TemplateView):
 
             return redirect('/admin/')
 
-        return super(ActivationView, self).dispatch(request, key, *args, **kwargs)
+        return super(ActivationView, self).dispatch(
+            request, key, *args, **kwargs
+        )
 
     def get_context_data(self, **kwargs):
         context = super(ActivationView, self).get_context_data(**kwargs)
@@ -73,7 +75,9 @@ class ResetPasswordView(TemplateView):
         if not self.reset_password_key:
             self.reset_password_error = True
 
-        return super(ResetPasswordView, self).dispatch(request, key, *args, **kwargs)
+        return super(ResetPasswordView, self).dispatch(
+            request, key, *args, **kwargs
+        )
 
     def get_context_data(self, **kwargs):
         context = super(ResetPasswordView, self).get_context_data(**kwargs)

@@ -20,7 +20,28 @@
                 </div>
             {% endfor %}
         {% endif %}
-        {% include 'pagination.html' %}
     </div>
+</div>
+<!--pagination-->
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <div class="pagination">
+            <span class="step-links">
+                {% if posts.has_previous %}
+                    <a href="?page={{ posts.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">Previous</a>
+                {% endif %}
+
+                <span class="current">
+                    Page {{ posts.number }} of {{ posts.paginator.num_pages }}.
+                </span>
+
+                {% if posts.has_next %}
+                    <a href="?page={{ posts.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">Next</a>
+                {% endif %}
+            </span>
+        </div>
+    </div>
+</div>
+
 </div>
 {% endblock %}

@@ -3,24 +3,39 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import UpdateView
-
+from django.db.models import Q
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 # Local
 from edms.models import Lesson, Exam, Other_Document, Requested_Documents
 from users.models import User
-
-
+from .forms import LessonForm
 
 
 class LessonListView(ListView):
     model = Lesson
     template_name = 'edms/lesson/list.html'
-    paginate_by = 3
+    
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        if query:
+            lessons = Lesson.objects.filter(
+                Q(lesson_name_icontains=query) |
+                Q(user__first_name__icontains=query) 
+            ).distinct()
+        
+        paginator = Paginator(lessons, 2)
+        page = self.request.GET.get('page')
+        try:
+            lessons = paginator.page(page)
+        except PageNotAnInteger:
+            lessons = paginator.page(1)
+        except EmptyPage:
+            lessons = paginator.page(paginator.num_pages)
+        return render(self.request, 'edms/lesson/list.html', {'lessons' : lessons})
 
-   
     def get(self, request):
         user = request.user
-        
         if user.is_department_manager:
             documnets = Requested_Documents.objects.filter(
                 lesson__user=user
@@ -37,7 +52,6 @@ class LessonListView(ListView):
             for doc in documnets:
                 lesson_id = str(doc.lesson.id)
                 lessons[lesson_id]['docs'].append(doc)
-            
             return render(request, self.template_name, {
                 'lessons': lessons,
             })
@@ -102,8 +116,9 @@ class LessonListView(ListView):
                 'lessons': lessons,
             })
         else:
-            return redirect(reverse('edms:home'))       
-    
+            return redirect(reverse('edms:home'))
+
+
 class LessonDetailView(DetailView):
     model = Lesson
     template_name = 'edms/lesson/detail.html'

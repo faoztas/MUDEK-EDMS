@@ -7,7 +7,8 @@ from rest_framework import routers
 # Local Django
 from users.api_views import UserViewSet
 from edms.api_views import (
-    LessonViewSet, ExamViewSet, Other_DocumentViewSet, Requested_DocumentsViewSet
+    LessonViewSet, ExamViewSet, Other_DocumentViewSet,
+    Requested_DocumentsViewSet
 )
 
 

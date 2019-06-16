@@ -17,6 +17,7 @@ from django.utils.translation import ugettext_lazy as _
 from users.models import ActivationKey, ResetPasswordKey
 from Mudek.tasks import mail_task
 
+
 class ActivationKeyModule(object):
 
     @staticmethod
@@ -68,7 +69,9 @@ class ResetPasswordKeyModule(object):
     @staticmethod
     def get_key(key):
         try:
-            reset_password_key = ResetPasswordKey.objects.get(key=key, is_used=False)
+            reset_password_key = ResetPasswordKey.objects.get(
+                key=key, is_used=False
+            )
         except ResetPasswordKey.DoesNotExist:
             reset_password_key = None
 
@@ -120,7 +123,9 @@ class MailModule(object):
                 "Hello, {full_name}\n"
                 "Set New Password = {reset_password_url}\n").format(
                     full_name=template_context.get('full_name', ''),
-                    reset_password_url=template_context.get('reset_password_url', '')
+                    reset_password_url=template_context.get(
+                        'reset_password_url', ''
+                    )
                 ),
             'html_message': render_to_string(
                 'mail/forgot-password-mail.html', template_context

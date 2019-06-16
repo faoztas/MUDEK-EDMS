@@ -1,11 +1,26 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
 <div class="container-fluid">
     <div class="navbar-header">
+        <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
     <a class="navbar-brand" href="{% url 'edms:lesson-list' %}">
         <span class="glyphicon glyphicon-duplicate" aria-hidden="true">
         </span>&nbsp; EDMS</a>
     </a>
     </div>
+    <!--Search-->
+    <form class="navbar-form navbar-right" role="search" method="GET" action="">
+            <div class="input-group">
+                <input class="form-control" type="text" name="q" placeholder="Search on lessons" value="{{ request.GET.q }}" >
+                <span class="input-group-btn">
+                    <input class="btn btn-default" type="submit" value="Ara">
+                </span>
+            </div>
+        </form>
     {% if user.is_authenticated %}
         <ul class="nav navbar-nav navbar-right">
             <li class=""><a href="{% url 'edms:password_change' %}">
@@ -18,14 +33,7 @@
             </li>
             
         </ul>
-        {% endif %}
-        <form class="navbar-form navbar-left" role="search" method="GET" action="">
-            <div class="input-group">
-                <input class="form-control" type="text" name="q" placeholder="Search" value="{{ request.GET.q }}" >
-                <span class="input-group-btn">
-                    <input class="btn btn-default" type="submit" value="Search">
-                </span>
-            </div>
-        </form>
+    {% endif %}
+   
 </div>
 </nav>

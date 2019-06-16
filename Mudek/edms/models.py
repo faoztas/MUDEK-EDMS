@@ -1,11 +1,29 @@
+# Standart Library
+import os
+
 # Django
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.utils import timezone
 from django.urls import reverse
-import datetime
+from django.core.exceptions import ValidationError
 
+# Third-Party
 from ckeditor.fields import RichTextField
+
+
+def user_directory_path(instance, filename):
+    return 'user {0}/{1}'.format(instance.user.email, filename)
+
+
+def validate_file_extension(value):
+    ext = os.path.splitext(value.name)[1]
+    valid_extensions = [
+        '.pdf', '.doc', '.docx', '.jpg', '.png', '.xlsx', '.xls'
+    ]
+    if not ext.lower() in valid_extensions:
+        raise ValidationError('Unsupported file extension.')
+
 
 class Lesson(models.Model):
     user = models.ForeignKey(
@@ -20,19 +38,20 @@ class Lesson(models.Model):
         blank=True
     )
     lesson_content_file = models.FileField(
-        verbose_name=_('Ders İçeriği Dosya'), blank=True, null=True
+        verbose_name=_('Ders İçeriği Dosya'), blank=True, null=True,
+        upload_to=user_directory_path, validators=[validate_file_extension]
     )
     lesson_notes = RichTextField(verbose_name=_('Ders Notu'), blank=True)
     lesson_notes_file = models.FileField(
         verbose_name=_('Ders Notu Dosya'),
-        blank=True, null=True
+        blank=True, null=True,
+        upload_to=user_directory_path, validators=[validate_file_extension]
     )
 
     def __str__(self):
         return '{lesson_name}'.format(
             lesson_name=self.lesson_name
         )
-
 
     class Meta:
         verbose_name = 'Lesson'
@@ -44,14 +63,20 @@ class Exam(models.Model):
         Lesson,
         on_delete=models.CASCADE
     )
-    exam_type = models.CharField(verbose_name=_('Sınav Türü'), max_length=50, blank=True, null=True)
+    exam_type = models.CharField(
+        verbose_name=_('Sınav Türü'), max_length=50, blank=True, null=True
+    )
     exam_information = RichTextField(
-        verbose_name=_('Sınav Hakkında Bilgi'), max_length=500, blank=True, null=True)
+        verbose_name=_('Sınav Hakkında Bilgi'),
+        max_length=500, blank=True, null=True
+    )
     exam_file = models.FileField(
-        verbose_name=_('Sınav Kağıdı Dosya'), blank=True, null=True
+        verbose_name=_('Sınav Kağıdı Dosya'), blank=True, null=True,
+        upload_to=user_directory_path, validators=[validate_file_extension]
     )
     exam_answer_file = models.FileField(
-        verbose_name=_('Cevap Anahtarı Dosya'), blank=True, null=True
+        verbose_name=_('Cevap Anahtarı Dosya'), blank=True, null=True,
+        upload_to=user_directory_path, validators=[validate_file_extension]
     )
 
     def __str__(self):
@@ -71,20 +96,28 @@ class Other_Document(models.Model):
         on_delete=models.CASCADE
     )
     course_evaluation_form = models.FileField(
-        verbose_name=_('Ders Değerlendirme Formu')
+        verbose_name=_('Ders Değerlendirme Formu'),
+        blank=True, null=True,
+        upload_to=user_directory_path, validators=[validate_file_extension]
     )
-    course_survey = models.FileField(verbose_name=_('Ders Anketi'))
+    course_survey = models.FileField(verbose_name=_('Ders Anketi'),
+        blank=True, null=True,
+        upload_to=user_directory_path, validators=[validate_file_extension]
+    )
     exam_note_list_midterm = models.FileField(
         verbose_name=_('Arasınav Sınav Not Listesi'),
-        blank=True, null=True
+        blank=True, null=True,
+        upload_to=user_directory_path, validators=[validate_file_extension]
     )
     exam_note_list_end_of_term = models.FileField(
         verbose_name=_('Dönem Sonu Sınav Not Listesi'),
-        blank=True, null=True
+        blank=True, null=True,
+        upload_to=user_directory_path, validators=[validate_file_extension]
     )
     exam_note_list_Integrated = models.FileField(
         verbose_name=_('Bütünleme Sınav Not Listesi'),
-        blank=True, null=True
+        blank=True, null=True,
+        upload_to=user_directory_path, validators=[validate_file_extension]
     )
 
     def __str__(self):

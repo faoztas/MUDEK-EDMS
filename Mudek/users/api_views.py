@@ -9,17 +9,18 @@ from djoser import utils
 from django.core.mail import send_mail
 from djoser.conf import settings
 
-
-
 # Local Django
 from users.models import User, ActivationKey
-from Mudek.modules import ActivationKeyModule, ResetPasswordKeyModule, MailModule
+from Mudek.modules import (
+    ActivationKeyModule, ResetPasswordKeyModule, MailModule
+)
 from users.serializers import (
     UserSerializer, UserListSerializer, UserCreateSerializer,
     UserRetrieveSerializer, UserUpdateSerializer,
     UserPasswordChangeSerializer, UserPasswordForgotSerializer,
     UserActivationResendSerializer, TokenCreateSerializer
 )
+
 
 class TokenCreateView(TokenCreateView):
     serializer_class = TokenCreateSerializer
@@ -101,7 +102,10 @@ class UserViewSet(mixins.ListModelMixin,
 
             return Response(status=status.HTTP_200_OK)
         else:
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            return Response(
+                serializer.errors,
+                status=status.HTTP_400_BAD_REQUEST
+            )
 
     @list_route(methods=['post'], url_path='password/forgot',
                 url_name='forgot-password')
@@ -111,14 +115,18 @@ class UserViewSet(mixins.ListModelMixin,
 
         if serializer.is_valid():
             # Create Forgot Password Key
-            reset_password_key = ResetPasswordKeyModule.create_key(user=serializer.user)
+            reset_password_key = ResetPasswordKeyModule.create_key(
+                user=serializer.user
+            )
 
             # Send Forgot Password Mail
             MailModule.send_forgot_password_mail(reset_password_key)
 
             return Response(status=status.HTTP_200_OK)
         else:
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            return Response(
+                serializer.errors, status=status.HTTP_400_BAD_REQUEST
+            )
 
     @list_route(methods=['post'], url_path='activation/resend',
                 url_name='resend-activation')
@@ -128,11 +136,15 @@ class UserViewSet(mixins.ListModelMixin,
 
         if serializer.is_valid():
             # Create Activation Key
-            activation_key = ActivationKeyModule.create_key(user=serializer.user)
+            activation_key = ActivationKeyModule.create_key(
+                user=serializer.user
+            )
 
             # Send Activation Mail
             MailModule.send_activation_mail(activation_key)
 
             return Response(status=status.HTTP_200_OK)
         else:
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            return Response(
+                serializer.errors, status=status.HTTP_400_BAD_REQUEST
+            )

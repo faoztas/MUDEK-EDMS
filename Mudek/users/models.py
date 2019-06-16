@@ -90,4 +90,3 @@ class ResetPasswordKey(models.Model):
 
     def __str__(self):
         return '{key}'.format(key=self.key)
-    

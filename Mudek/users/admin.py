@@ -42,11 +42,13 @@ class UserAdmin(_UserAdmin):
     list_display = (
         'first_name', 'last_name', 'email',
         'is_active', 'is_verified', 'is_superuser', 'is_academician',
-        'is_department_manager', 'is_assistant_department_manager', 'is_dean_manager'
+        'is_department_manager', 'is_assistant_department_manager',
+        'is_dean_manager'
     )
     list_filter = (
         'is_active', 'is_verified', 'is_superuser', 'is_academician',
-        'is_department_manager', 'is_assistant_department_manager', 'is_dean_manager'
+        'is_department_manager', 'is_assistant_department_manager',
+        'is_dean_manager'
     )
     search_fields = ('email', 'first_name', 'last_name')
     ordering = ('first_name', 'last_name')

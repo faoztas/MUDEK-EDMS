@@ -23,7 +23,7 @@ urlpatterns = [
         LessonUpdateView.as_view(),
         name='lesson-update'
     ),
-    
+
     # Exam Links
     path('exam/<int:pk>/update', ExamUpdateView.as_view(), name='exam-update'),
 

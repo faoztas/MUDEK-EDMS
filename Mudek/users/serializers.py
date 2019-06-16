@@ -13,6 +13,7 @@ from users.models import User
 class TokenCreateSerializer(TokenCreateSerializer):
     pass
 
+
 class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
@@ -41,7 +42,10 @@ class UserCreateSerializer(UserSerializer):
 
     class Meta:
         model = User
-        fields = ('id', 'email', 'first_name', 'last_name', 'password', 'confirm_password')
+        fields = (
+            'id', 'email', 'first_name',
+            'last_name', 'password', 'confirm_password'
+        )
         extra_kwargs = {
             'password': {'write_only': True}
         }
@@ -127,4 +131,3 @@ class UserActivationResendSerializer(serializers.Serializer):
             raise serializers.ValidationError(_('User not found!'))
 
         return value
-

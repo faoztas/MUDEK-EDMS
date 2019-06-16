@@ -55,6 +55,6 @@ class ResetPasswordForm(forms.Form):
 
             # Key Updated
             key.is_used = True
-            key.save()                
+            key.save()
 
         return user

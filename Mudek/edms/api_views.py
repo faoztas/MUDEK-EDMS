@@ -38,6 +38,7 @@ class LessonViewSet(mixins.ListModelMixin,
         else:
             return LessonSerializer
 
+
 class ExamViewSet(mixins.ListModelMixin,
                   mixins.CreateModelMixin,
                   mixins.RetrieveModelMixin,
