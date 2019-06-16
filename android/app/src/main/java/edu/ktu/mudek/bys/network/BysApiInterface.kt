@@ -13,7 +13,7 @@ interface BysApiInterface {
     fun getUserDetails(@Path(
             "id") id: Int): Call<UserDetails>
 
-    @GET("lessons/")
+    @GET("bins/145pud")
     fun getLessons(): Call<Lessons>
 
     @GET("lessons/{id}/")

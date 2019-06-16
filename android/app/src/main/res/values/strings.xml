@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">Müdek e-BYS</string>
+    <string name="app_real_name">Müdek Elektronik Belge Yönetim Sistemi</string>
+
     <string name="title_activity_main2">Main2Activity</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>

@@ -1,8 +1,11 @@
 package edu.ktu.mudek.bys.ui
 
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.provider.AlarmClock.EXTRA_MESSAGE
+import android.support.v4.app.ActivityCompat
+import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.EditText
@@ -18,7 +21,18 @@ open class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
     }
 
+    private val REQUEST_INTERNET_PERMISSION = 0
+
     fun login(view: View) {
+
+        if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.INTERNET) != PackageManager.PERMISSION_GRANTED &&
+                ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_NETWORK_STATE) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.INTERNET, android.Manifest.permission.ACCESS_NETWORK_STATE), REQUEST_INTERNET_PERMISSION)
+        } else if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.INTERNET) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.INTERNET), REQUEST_INTERNET_PERMISSION)
+        } else if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_NETWORK_STATE) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.ACCESS_NETWORK_STATE), REQUEST_INTERNET_PERMISSION)
+        }
 
         val intent = Intent(this, MainActivity::class.java)
         val editText = findViewById<EditText>(R.id.editUsername)

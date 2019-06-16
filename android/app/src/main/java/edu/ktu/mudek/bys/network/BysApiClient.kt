@@ -6,9 +6,9 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object BysApiClient {
 
-    private const val mainUrl = "http://127.0.0.1:8000/api/"
-    private const val apiKey = ""
-    private const val apiAuth = ""
+    const val mainUrl = "http://api.myjson.com/"
+    private val userToken = ""
+    private val apiAuth = ""
 
     private val okHttpClient = OkHttpClient.Builder()
             .addInterceptor {chain ->
