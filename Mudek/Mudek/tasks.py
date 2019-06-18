@@ -4,11 +4,7 @@ from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.utils.translation import ugettext_lazy as _
 
-# Local Django
-from Mudek import celery_app
 
-
-@celery_app.task
 def mail_task(context, verb):
     """
     Context Format

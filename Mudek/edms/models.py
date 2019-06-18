@@ -12,8 +12,11 @@ from django.core.exceptions import ValidationError
 from ckeditor.fields import RichTextField
 
 
-def user_directory_path(instance, filename):
+def lesson_directory_path(instance, filename):
     return 'user {0}/{1}'.format(instance.user.email, filename)
+
+def other_directory_path(instance, filename):
+    return 'user {0}/{1}'.format(instance.lesson.user.email, filename)
 
 
 def validate_file_extension(value):
@@ -39,13 +42,13 @@ class Lesson(models.Model):
     )
     lesson_content_file = models.FileField(
         verbose_name=_('Ders İçeriği Dosya'), blank=True, null=True,
-        upload_to=user_directory_path, validators=[validate_file_extension]
+        upload_to=lesson_directory_path, validators=[validate_file_extension]
     )
     lesson_notes = RichTextField(verbose_name=_('Ders Notu'), blank=True)
     lesson_notes_file = models.FileField(
         verbose_name=_('Ders Notu Dosya'),
         blank=True, null=True,
-        upload_to=user_directory_path, validators=[validate_file_extension]
+        upload_to=lesson_directory_path, validators=[validate_file_extension]
     )
 
     def __str__(self):
@@ -72,11 +75,11 @@ class Exam(models.Model):
     )
     exam_file = models.FileField(
         verbose_name=_('Sınav Kağıdı Dosya'), blank=True, null=True,
-        upload_to=user_directory_path, validators=[validate_file_extension]
+        upload_to=other_directory_path, validators=[validate_file_extension]
     )
     exam_answer_file = models.FileField(
         verbose_name=_('Cevap Anahtarı Dosya'), blank=True, null=True,
-        upload_to=user_directory_path, validators=[validate_file_extension]
+        upload_to=other_directory_path, validators=[validate_file_extension]
     )
 
     def __str__(self):
@@ -88,46 +91,6 @@ class Exam(models.Model):
     class Meta:
         verbose_name = 'Exam'
         verbose_name_plural = 'Exam'
-
-
-class Other_Document(models.Model):
-    lesson = models.ForeignKey(
-        Lesson,
-        on_delete=models.CASCADE
-    )
-    course_evaluation_form = models.FileField(
-        verbose_name=_('Ders Değerlendirme Formu'),
-        blank=True, null=True,
-        upload_to=user_directory_path, validators=[validate_file_extension]
-    )
-    course_survey = models.FileField(verbose_name=_('Ders Anketi'),
-        blank=True, null=True,
-        upload_to=user_directory_path, validators=[validate_file_extension]
-    )
-    exam_note_list_midterm = models.FileField(
-        verbose_name=_('Arasınav Sınav Not Listesi'),
-        blank=True, null=True,
-        upload_to=user_directory_path, validators=[validate_file_extension]
-    )
-    exam_note_list_end_of_term = models.FileField(
-        verbose_name=_('Dönem Sonu Sınav Not Listesi'),
-        blank=True, null=True,
-        upload_to=user_directory_path, validators=[validate_file_extension]
-    )
-    exam_note_list_Integrated = models.FileField(
-        verbose_name=_('Bütünleme Sınav Not Listesi'),
-        blank=True, null=True,
-        upload_to=user_directory_path, validators=[validate_file_extension]
-    )
-
-    def __str__(self):
-        return '{lesson}'.format(
-            lesson=self.lesson.lesson_name
-        )
-
-    class Meta:
-        verbose_name = 'Other Document'
-        verbose_name_plural = 'Other Document'
 
 
 class Requested_Documents(models.Model):
@@ -142,10 +105,38 @@ class Requested_Documents(models.Model):
     )
 
     def __str__(self):
-        return '{lesson}'.format(
-            lesson=self.lesson.lesson_name
+        return '{d_name}'.format(
+            d_name=self.d_name
         )
 
     class Meta:
         verbose_name = 'Requested Documents'
         verbose_name_plural = 'Requested Documents'
+
+
+class Other_Document(models.Model):
+    lesson = models.ForeignKey(
+        Lesson,
+        on_delete=models.CASCADE
+    )
+    name = models.ForeignKey(
+        Requested_Documents,
+        on_delete=models.CASCADE
+    )
+
+    document = models.FileField(
+        verbose_name=_('Dosya'), blank=True, null=True,
+        upload_to=other_directory_path, validators=[validate_file_extension]
+    )
+
+    def __str__(self):
+        return '{name}'.format(
+            name=self.name.d_name
+        )
+
+    class Meta:
+        verbose_name = 'Other Document'
+        verbose_name_plural = 'Other Document'
+
+
+

@@ -32,23 +32,6 @@ class ExamAdmin(admin.ModelAdmin):
     search_fields = ('lesson',)
 
 
-@admin.register(Other_Document)
-class Other_DocumentAdmin(admin.ModelAdmin):
-
-    fields = (
-        'lesson', 'course_evaluation_form',
-        'course_survey',
-        'exam_note_list_midterm',
-        'exam_note_list_end_of_term',
-        'exam_note_list_Integrated',
-
-    )
-
-    list_display = ('lesson',)
-    list_filter = ('lesson',)
-    search_fields = ('lesson',)
-
-
 @admin.register(Requested_Documents)
 class Requested_DocumentsAdmin(admin.ModelAdmin):
 
@@ -57,3 +40,17 @@ class Requested_DocumentsAdmin(admin.ModelAdmin):
     list_display = ('lesson', 'd_name', 'd_bool')
     list_filter = ('lesson', 'd_name', 'd_bool')
     search_fields = ('lesson', 'd_name', 'd_bool')
+
+
+@admin.register(Other_Document)
+class Other_DocumentAdmin(admin.ModelAdmin):
+
+    fields = (
+        'lesson',
+        'name',
+        'document'
+    )
+
+    list_display = ('lesson', 'name')
+    list_filter = ('lesson',)
+    search_fields = ('lesson',)

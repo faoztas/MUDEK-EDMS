@@ -1,11 +1,12 @@
 # Django
 from django.urls import path
 from django.contrib.auth.views import (
-    LoginView, LogoutView, PasswordResetView, PasswordResetDoneView,
+    LogoutView, PasswordResetView, PasswordResetDoneView,
     PasswordResetConfirmView, PasswordResetCompleteView,
     PasswordChangeView, PasswordChangeDoneView
 )
 from django.contrib.auth import views as auth_views
+from django.views.generic import TemplateView
 
 # Local
 from edms.views import *
@@ -16,7 +17,6 @@ urlpatterns = [
     # Lesson Links
     path('', LessonListView.as_view(), name='lesson-list'),
     path('lessons', LessonListView.as_view(), name='lesson-list'),
-    # path('complete/', complete, name='complete'),
     path('lessons/<int:pk>', LessonDetailView.as_view(), name='lesson-detail'),
     path(
         'lessons/<int:pk>/update',
@@ -41,10 +41,7 @@ urlpatterns = [
         name='requsted-update'
     ),
     # User İnteraction
-    path('login/', LoginView.as_view(), {
-        'template_name': 'registration/login.html'},
-        name='login'
-    ),
+    path('login/', LoginView.as_view(), name='login'),
     path('logout/', LogoutView.as_view(), {
         'template_name': 'registration/logout.html'},
         name='logout'

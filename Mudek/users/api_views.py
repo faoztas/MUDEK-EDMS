@@ -2,7 +2,6 @@
 from rest_framework.response import Response
 from rest_framework import viewsets, mixins, status
 from rest_framework.decorators import detail_route, list_route
-from djoser.views import TokenCreateView
 from djoser import utils
 
 # Django
@@ -18,19 +17,8 @@ from users.serializers import (
     UserSerializer, UserListSerializer, UserCreateSerializer,
     UserRetrieveSerializer, UserUpdateSerializer,
     UserPasswordChangeSerializer, UserPasswordForgotSerializer,
-    UserActivationResendSerializer, TokenCreateSerializer
+    UserActivationResendSerializer
 )
-
-
-class TokenCreateView(TokenCreateView):
-    serializer_class = TokenCreateSerializer
-
-    def _action(self, serializer):
-        token = utils.login_user(self.request, serializer.user)
-        token_serializer_class = settings.SERIALIZERS.token
-        return Response(
-            data=token_serializer_class(token).data, status=status.HTTP_200_OK
-        )
 
 
 class UserViewSet(mixins.ListModelMixin,
@@ -119,9 +107,6 @@ class UserViewSet(mixins.ListModelMixin,
                 user=serializer.user
             )
 
-            # Send Forgot Password Mail
-            MailModule.send_forgot_password_mail(reset_password_key)
-
             return Response(status=status.HTTP_200_OK)
         else:
             return Response(
@@ -139,9 +124,6 @@ class UserViewSet(mixins.ListModelMixin,
             activation_key = ActivationKeyModule.create_key(
                 user=serializer.user
             )
-
-            # Send Activation Mail
-            MailModule.send_activation_mail(activation_key)
 
             return Response(status=status.HTTP_200_OK)
         else:

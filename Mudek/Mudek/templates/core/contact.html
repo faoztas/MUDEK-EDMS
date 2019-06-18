@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block body %}
+    <div class="container">
+        <div class="thumbnail1">
+                <div class="updateform">
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        {{ form.media }}
+                        <input class="btn btn-update" type="submit" value="Send Mail">
+                    </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

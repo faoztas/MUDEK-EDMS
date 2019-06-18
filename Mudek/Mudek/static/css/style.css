@@ -1,0 +1,110 @@
+.edms img{
+    width: 15%;
+    padding-top: 9px;
+}
+body{
+    background: url(http://mymaplist.com/img/parallax/back.png);
+	background-color: #444;
+    background: url(http://mymaplist.com/img/parallax/pinlayer2.png),url(http://mymaplist.com/img/parallax/pinlayer1.png),url(http://mymaplist.com/img/parallax/back.png);    
+}
+
+.vertical-offset-100{
+    padding-top:50px;
+    padding-right: 11%;
+}
+.post{
+    margin-top: 45%
+}
+.btn-block{
+    background-color: #012623;
+    color: aliceblue;
+}
+
+.thumbnail {
+    position: relative;
+    padding: 0px;
+    margin-bottom: 20px;
+    text-align: center;
+    
+}
+.thumbnail1 {
+    background-color: #2E578C;
+    padding: 10px;
+    border-radius: 10px;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+.navbar-inverse{
+    background-color: #012623;
+    border-color: #012623;
+}
+.panel-danger{
+    background-color: rgb(188, 185, 192);
+}
+body {
+    background-color: #1C3659;
+}
+.lessonlist{
+    background-color: #8B8790;
+    margin-top: 5%;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+.lessonname{
+    color: #012623;
+    font-family: 'Anton', sans-serif;
+    margin-left: 20px
+}
+.request{
+    margin-top: 2%;
+}
+
+.r_doc{
+    color: #012623;
+    font-family: 'Anton', sans-serif;
+    font-size: 17px;
+}
+
+.lessonheader{
+    text-align: center;
+    color: #448FF2;
+    font-family: 'Anton', sans-serif;
+}
+.panel-heading{
+    background-color: #2E578C;
+}
+.panel{
+    margin-left: 30%;
+    font-family: 'Francois One', sans-serif;
+    font-size: 20px;
+    color: #2E578C;
+}
+.updateform{
+    color: rgb(241, 238, 245);
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 16px;
+    margin-left: 15%
+}
+.btn-show{
+    color: rgb(255, 255, 255);
+    background-color: #448FF2;
+}
+.btn-update{
+    color: #D5D2D9;
+    background-color: #012623;
+    margin-left: 40%;
+}
+.updateform{
+    margin-left: 40px
+}
+select{
+    color: #0D0D0D;
+  }
+  
+select option {
+    margin: 40px;
+    background: #448FF2;
+    color: #fff;
+    text-shadow: 0 1px 0 #448FF2;
+}

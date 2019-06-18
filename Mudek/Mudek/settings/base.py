@@ -13,8 +13,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 import os
 
 #  Local Django
-from .secret import SECRET_KEY
-
+from .local import SECRET_KEY
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -43,10 +42,12 @@ INSTALLED_APPS = [
     'corsheaders',
     'ckeditor',
     'crispy_forms',
+    'captcha',
 
     # Internal Applications
     'edms',
     'users',
+    'core',
 ]
 
 MIDDLEWARE = [
@@ -97,13 +98,14 @@ USE_L10N = True
 USE_TZ = True
 
 
-LOGIN_REDIRECT_URL = '/lessons'
+LOGIN_REDIRECT_URL = '/login'
 
 LOGOUT_REDIRECT_URL = '/login/'
 
 LOGIN_URL = 'login/'
 
 LOGIN_EXEMPT_URLS = (
+    'login/',
     'logout/',
     'register/',
     'change-password',
@@ -116,7 +118,7 @@ LOGIN_EXEMPT_URLS = (
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static"), ]
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+#STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 
@@ -125,6 +127,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 # ckeditor
 CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"
+
 CKEDITOR_CONFIGS = {
     'default': {
         'toolbar': 'Custom',
@@ -146,5 +149,13 @@ DOMAIN_BACKEND = 'http://127.0.0.1:8000'
 
 # Email
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
+
+from .recaptcha import RECAPTCHA_PUBLIC_KEY, RECAPTCHA_PRIVATE_KEY
+
+RECAPTCHA_PUBLIC_KEY = RECAPTCHA_PUBLIC_KEY
+RECAPTCHA_PRIVATE_KEY = RECAPTCHA_PRIVATE_KEY
+
 
 from .app_settings import *

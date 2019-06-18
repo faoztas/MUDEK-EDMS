@@ -10,11 +10,13 @@ from edms.api_views import (
     LessonViewSet, ExamViewSet, Other_DocumentViewSet,
     Requested_DocumentsViewSet
 )
+from core.api_views import ContactViewSet
 
 
 router_L = routers.DefaultRouter()
 
 LIST_LINKS = [
+    (r'contacts', ContactViewSet, 'contacts'),
     (r'users', UserViewSet, 'users'),
     (r'lessons', LessonViewSet, 'lessons'),
     (r'exams', ExamViewSet, 'exams'),

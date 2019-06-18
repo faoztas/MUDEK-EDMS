@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
-
+{% include 'messages.html' %}
 {% block body %}
 <div class="container">
-    <div class="row">
+    <div class="thumbnail1">
         {% if lessons %}
             {% for key, lesson in lessons.items %}
-                <div class="lessonlist">
+                <div class="thumbnail">
+                        <h5 class="lessonname">{{ lesson.lesson.user.first_name }} {{ lesson.lesson.user.last_name }}</h5>
                     <a href="{% url 'edms:lesson-detail' pk=lesson.lesson.pk %}">
                         <h2 class="lessonname">{{ lesson.lesson.lesson_name|safe|linebreaks|truncatechars:150 }}</h2>
                     </a>
@@ -19,29 +20,14 @@
                     {% endfor %}
                 </div>
             {% endfor %}
+            <nav aria-label="...">
+            <ul class="pager">
+                <li class="previous"><a href="?page={{ page_obj.previous_page_number }}"><span aria-hidden="true">&larr;</span> Previous</a></li>
+                <li class="next"><a href="?page={{ page_obj.next_page_number }}">Next <span aria-hidden="true">&rarr;</span></a></li>
+            </ul>
+            </nav>
         {% endif %}
     </div>
 </div>
-<!--pagination-->
-<div class="row">
-    <div class="col-md-6 col-md-offset-3">
-        <div class="pagination">
-            <span class="step-links">
-                {% if posts.has_previous %}
-                    <a href="?page={{ posts.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">Previous</a>
-                {% endif %}
-
-                <span class="current">
-                    Page {{ posts.number }} of {{ posts.paginator.num_pages }}.
-                </span>
-
-                {% if posts.has_next %}
-                    <a href="?page={{ posts.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">Next</a>
-                {% endif %}
-            </span>
-        </div>
-    </div>
-</div>
-
 </div>
 {% endblock %}

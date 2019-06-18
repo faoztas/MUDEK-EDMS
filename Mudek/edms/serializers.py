@@ -144,11 +144,8 @@ class Other_DocumentSerializer(serializers.ModelSerializer):
         fields = (
             'id',
             'lesson',
-            'course_evaluation_form',
-            'course_survey',
-            'exam_note_list_midterm',
-            'exam_note_list_end_of_term',
-            'exam_note_list_Integrated'
+            'name',
+            'document'
         )
 
 
@@ -159,11 +156,8 @@ class Other_DocumentListSerializer(Other_DocumentSerializer):
         fields = (
             'id',
             'lesson',
-            'course_evaluation_form',
-            'course_survey',
-            'exam_note_list_midterm',
-            'exam_note_list_end_of_term',
-            'exam_note_list_Integrated'
+            'name',
+            'document'
         )
 
 
@@ -174,11 +168,8 @@ class Other_DocumentCreateSerializer(Other_DocumentSerializer):
         fields = (
             'id',
             'lesson',
-            'course_evaluation_form',
-            'course_survey',
-            'exam_note_list_midterm',
-            'exam_note_list_end_of_term',
-            'exam_note_list_Integrated'
+            'name',
+            'document'
         )
 
 
@@ -193,11 +184,8 @@ class Other_DocumentUpdateSerializer(Other_DocumentSerializer):
         fields = (
             'id',
             'lesson',
-            'course_evaluation_form',
-            'course_survey',
-            'exam_note_list_midterm',
-            'exam_note_list_end_of_term',
-            'exam_note_list_Integrated'
+            'name',
+            'document'
         )
 
 

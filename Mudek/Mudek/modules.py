@@ -2,9 +2,6 @@
 import random
 import datetime
 
-# Third-Party
-from celery.task.control import revoke
-
 # Django
 from django.conf import settings
 from django.core.mail import send_mail
@@ -105,7 +102,7 @@ class MailModule(object):
             'recipient_list': [activation_key.user.email]
         }
 
-        mail_task.delay(context, 'activation')
+        send_mail.delay(context, 'activation')
 
     @staticmethod
     def send_forgot_password_mail(reset_password_key):

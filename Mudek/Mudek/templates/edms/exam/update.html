@@ -5,9 +5,7 @@
 {% block body %}
 
     <div class="container">
-        <div class="row">
-
-                <h1>Form</h1>
+        <div class="thumbnail1">
                 <div class="updateform">
                     <form method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
@@ -15,7 +13,6 @@
                         {{ form.media }}
                         <input class="btn btn-update" type="submit" value="Exam Save">
                     </form>
-
             </div>
         </div>
     </div>

@@ -7,18 +7,19 @@ from django.conf.urls.static import static
 
 # Local Django
 from Mudek.views import ActivationView, ResetPasswordView
-from users.api_views import TokenCreateView
+from core.api_views import TokenCreateView
+
 
 urlpatterns = [
     # Admin
-    path('admin/', admin.site.urls),
+    path('edmsadmin/', admin.site.urls),
 
     # Api
     path('', include('Mudek.api_urls')),
 
     # Token
-    path('auth/login/', TokenCreateView.as_view(), name='login'),
-    path('auth/', include('djoser.urls.authtoken')),
+    path('api/auth/login/', TokenCreateView.as_view(), name='login'),
+    path('api/auth/', include('djoser.urls.authtoken')),
 
     # Activation and Password Operations
     path('activation/(<key>)/', ActivationView.as_view(), name='activation'),
@@ -29,5 +30,6 @@ urlpatterns = [
     ),
 
     # Web
-    path('', include('edms.urls'))
+    path('', include('edms.urls')),
+    path('contact/', include('core.urls'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

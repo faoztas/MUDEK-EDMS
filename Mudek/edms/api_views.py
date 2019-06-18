@@ -3,6 +3,7 @@ from rest_framework import viewsets, mixins
 
 # Local Django
 from edms.models import Lesson, Exam, Other_Document, Requested_Documents
+from users.models import User
 from edms.serializers import (
     LessonSerializer, LessonListSerializer, LessonRetrieveSerializer,
     LessonCreateSerializer, LessonUpdateSerializer, ExamSerializer,
@@ -24,7 +25,12 @@ class LessonViewSet(mixins.ListModelMixin,
     queryset = Lesson.objects.all()
 
     def get_queryset(self):
-        return self.queryset.filter(user=self.request.user)
+        if self.request.user.is_assistant_department_manager or self.request.user.is_department_manager or self.request.user.is_dean_manager:
+            return self.queryset.all()
+        elif self.request.user.is_academician:
+            return self.queryset.filter(user=self.request.user)
+        
+        
 
     def get_serializer_class(self):
         if self.action == 'list':
