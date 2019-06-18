@@ -6,16 +6,15 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object BysApiClient {
 
-    const val mainUrl = "http://api.myjson.com/"
-    private val userToken = ""
-    private val apiAuth = ""
+    const val mainUrl = "http://192.168.2.7:8000/api/"
+    var userToken = ""
 
     private val okHttpClient = OkHttpClient.Builder()
             .addInterceptor {chain ->
                 val original = chain.request()
 
                 val requestBuilder = original.newBuilder()
-                        .addHeader("Auth", apiAuth)
+                        .addHeader("Authorization", "Token "+userToken)
                         .method(original.method(),original.body())
 
                 val request = requestBuilder.build()
@@ -23,6 +22,15 @@ object BysApiClient {
             }.build()
 
     val instance: BysApiInterface by lazy {
+        val retrofit = Retrofit.Builder()
+                .baseUrl(mainUrl)
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(okHttpClient)
+                .build()
+
+        retrofit.create(BysApiInterface::class.java)
+    }
+    val login: BysApiInterface by lazy {
         val retrofit = Retrofit.Builder()
                 .baseUrl(mainUrl)
                 .addConverterFactory(GsonConverterFactory.create())
