@@ -33,9 +33,6 @@ class HomeFragment : Fragment() {
                 if (response.isSuccessful) {
                     Toast.makeText(activity?.baseContext, "... which is successful!", Toast.LENGTH_SHORT).show()
                     Log.i("Response",response.body().toString())
-                    Log.i("Call",call.toString())
-                    Log.i("Call",call.request().headers().toString())
-                    Log.i("Call",call.request().body().toString())
 
                     val lessonsAdapter = LessonsAdapter(response.body()!!)
                     recyclerView.adapter = lessonsAdapter
@@ -43,18 +40,12 @@ class HomeFragment : Fragment() {
                 else {
                     Toast.makeText(activity?.baseContext, "... which is bad :(", Toast.LENGTH_SHORT).show()
                     Log.i("Response",response.body().toString())
-                    Log.i("Call",call.toString())
-                    Log.i("Call",call.request().headers().toString())
-                    Log.i("Call",call.request().body().toString())
                 }
             }
 
             override fun onFailure(call: Call<ArrayList<Lessons>>, t: Throwable) {
                 Toast.makeText(activity?.baseContext,t.message,Toast.LENGTH_LONG).show()
                 Log.i("Response","onFailure",t)
-                Log.i("Call",call.toString())
-                Log.i("Call",call.request().headers().toString())
-                Log.i("Call",call.request().body().toString())
             }
 
         } )

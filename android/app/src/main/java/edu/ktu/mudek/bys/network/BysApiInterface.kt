@@ -2,48 +2,42 @@ package edu.ktu.mudek.bys.network
 
 import edu.ktu.mudek.bys.models.*
 import retrofit2.Call
-import retrofit2.http.*
+import retrofit2.http.GET
+import retrofit2.http.Path
 
 interface BysApiInterface {
-    @GET("users/?format=json")
-    fun getUsers(): Call<ArrayList<Users>>
+    @GET("users/")
+    fun getUsers(): Call<Users>
 
-    @GET("users/{id}/?format=json")
+    @GET("users/{id}/")
     fun getUserDetails(@Path(
             "id") id: Int): Call<UserDetails>
 
-    @GET("lessons/?format=json")
+    @GET("bins/1euhp1")
     fun getLessons(): Call<ArrayList<Lessons>>
 
-    @GET("lessons/{id}/?format=json")
+    @GET("lessons/{id}/")
     fun getLessonDetails(@Path(
             "id") id: Int): Call<LessonDetails>
 
-    @GET("exams/?format=json")
-    fun getExams(): Call<ArrayList<Exams>>
+    @GET("exams/")
+    fun getExams(): Call<Exams>
 
-    @GET("exams/{id}/?format=json")
+    @GET("exams/{id}/")
     fun getExamDetails(@Path(
             "id") id: Int): Call<ExamDetails>
 
-    @GET("other-documents/?format=json")
-    fun getOtherDocuments(): Call<ArrayList<OtherDocuments>>
+    @GET("other-documents/")
+    fun getOtherDocuments(): Call<OtherDocuments>
 
-    @GET("other-documents/{id}/?format=json")
+    @GET("other-documents/{id}/")
     fun getOtherDocumentDetails(@Path(
             "id") id: Int): Call<OtherDocumentDetails>
 
-    @GET("request-documents/?format=json")
-    fun getRequestDocuments(): Call<ArrayList<RequestDocuments>>
+    @GET("request-documents/")
+    fun getRequestDocuments(): Call<RequestDocuments>
 
-    @GET("request-documents/{id}/?format=json")
+    @GET("request-documents/{id}/")
     fun getRequestDocumentDetails(@Path(
             "id") id: Int): Call<RequestDocumentDetails>
-
-    @POST("auth/login/?format=json")
-    @FormUrlEncoded
-    fun AuthLogin(
-            @Field("password") password: String,
-            @Field("email") email: String): Call<AuthLogin>
-
 }
