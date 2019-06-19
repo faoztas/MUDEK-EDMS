@@ -6,10 +6,6 @@ from django.contrib.auth import authenticate
 
 
 class LessonForm(forms.ModelForm):
-    captcha = ReCaptchaField(
-        public_key='6LdejKkUAAAAAInTMp_Yu8-1Etf-woTyj02BMiBjh',
-        private_key='6LdejKkUAAAAALOa-Xvk6U5OV6Fz9IPFB0tGnGti'
-        )
 
     class Meta:
         model = Lesson

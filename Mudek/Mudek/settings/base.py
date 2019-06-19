@@ -40,9 +40,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'djoser',
     'corsheaders',
-    'ckeditor',
     'crispy_forms',
-    'captcha',
 
     # Internal Applications
     'edms',
@@ -118,31 +116,11 @@ LOGIN_EXEMPT_URLS = (
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static"), ]
-#STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
-
-# ckeditor
-CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"
-
-CKEDITOR_CONFIGS = {
-    'default': {
-        'toolbar': 'Custom',
-        'toolbar_Custom': [
-            ['Bold', 'Italic', 'Underline'],
-            [
-                'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent',
-                '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight',
-                'JustifyBlock'
-            ],
-            ['Link', 'Unlink'],
-            ['RemoveFormat', 'Source']
-        ]
-    },
-}
 
 # Domain
 DOMAIN_BACKEND = 'http://127.0.0.1:8000'
@@ -151,11 +129,5 @@ DOMAIN_BACKEND = 'http://127.0.0.1:8000'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
-
-from .recaptcha import RECAPTCHA_PUBLIC_KEY, RECAPTCHA_PRIVATE_KEY
-
-RECAPTCHA_PUBLIC_KEY = RECAPTCHA_PUBLIC_KEY
-RECAPTCHA_PRIVATE_KEY = RECAPTCHA_PRIVATE_KEY
-
 
 from .app_settings import *

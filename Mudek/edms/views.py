@@ -36,14 +36,6 @@ class LessonListView(ListView):
     template_name = 'edms/lesson/list.html'
     success_url = '/lessons'
     
-    def get_queryset(self):
-        query = self.request.GET.get('q')
-        if query:
-            lessons = Lesson.objects.filter(
-                Q(lesson_name_icontains=query) |
-                Q(user__first_name__icontains=query) 
-            ).distinct()
-
     def get(self, request):
         if request.user.is_authenticated:
             user = request.user
@@ -52,22 +44,7 @@ class LessonListView(ListView):
                     lesson__user=user
                 ).order_by("lesson")
                 lessons = {}
-                all_lessons = Lesson.objects.all()
-
-                query = request.GET.get('q')
-                if query:
-                    search = all_lessons.filter(
-                        Q(lesson_name=query) |
-                        Q(user__first_name__icontains=query) 
-                    ).distinct()
-                paginator = Paginator(all_lessons, 5)
-                page = request.GET.get('page')
-                try:
-                    pages = paginator.page(page)
-                except PageNotAnInteger:
-                    pages = paginator.page(1)
-                except EmptyPage:
-                    pages = paginator.page(paginator.num_pages)             
+                all_lessons = Lesson.objects.all()            
                 for lesson in all_lessons:
                     lesson_id = str(lesson.id)
                     lessons[lesson_id] = {
@@ -79,8 +56,7 @@ class LessonListView(ListView):
                     lesson_id = str(doc.lesson.id)
                     lessons[lesson_id]['docs'].append(doc)
                 return render(request, self.template_name, {
-                    'lessons': lessons,
-                    'pages' : pages
+                    'lessons': lessons
                 })
             elif user.is_academician:
                 documnets = Requested_Documents.objects.filter(

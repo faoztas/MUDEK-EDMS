@@ -8,8 +8,6 @@ from django.utils import timezone
 from django.urls import reverse
 from django.core.exceptions import ValidationError
 
-# Third-Party
-from ckeditor.fields import RichTextField
 
 
 def lesson_directory_path(instance, filename):
@@ -36,7 +34,7 @@ class Lesson(models.Model):
         related_name='lessons'
     )
     lesson_name = models.CharField(verbose_name=_('Ders Adı'), max_length=150)
-    lesson_content = RichTextField(
+    lesson_content = models.TextField(
         verbose_name=_('Ders İçeriği'),
         blank=True
     )
@@ -44,7 +42,7 @@ class Lesson(models.Model):
         verbose_name=_('Ders İçeriği Dosya'), blank=True, null=True,
         upload_to=lesson_directory_path, validators=[validate_file_extension]
     )
-    lesson_notes = RichTextField(verbose_name=_('Ders Notu'), blank=True)
+    lesson_notes = models.TextField(verbose_name=_('Ders Notu'), blank=True)
     lesson_notes_file = models.FileField(
         verbose_name=_('Ders Notu Dosya'),
         blank=True, null=True,
@@ -69,7 +67,7 @@ class Exam(models.Model):
     exam_type = models.CharField(
         verbose_name=_('Sınav Türü'), max_length=50, blank=True, null=True
     )
-    exam_information = RichTextField(
+    exam_information = models.TextField(
         verbose_name=_('Sınav Hakkında Bilgi'),
         max_length=500, blank=True, null=True
     )
