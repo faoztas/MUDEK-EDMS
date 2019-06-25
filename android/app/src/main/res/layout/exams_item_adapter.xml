@@ -12,7 +12,7 @@
         android:padding="10dp">
 
         <TextView
-            android:id="@+id/lessonId"
+            android:id="@+id/examId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="12sp"
@@ -20,7 +20,7 @@
             tools:visibility="gone" />
 
         <TextView
-            android:id="@+id/lessonName"
+            android:id="@+id/examLessonName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-thin"
@@ -30,7 +30,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/lessonContent"
+            android:id="@+id/examType"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-thin"
@@ -38,7 +38,15 @@
             android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/lessonContentFile"
+            android:id="@+id/examInformation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-thin"
+            android:textColor="@color/colorTextGreen"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/examFile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-thin"
@@ -47,15 +55,7 @@
             android:textStyle="italic" />
 
         <TextView
-            android:id="@+id/lessonNotes"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-thin"
-            android:textColor="@color/colorTextGreen"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/lessonNotesFile"
+            android:id="@+id/examAnswerFile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/colorText"

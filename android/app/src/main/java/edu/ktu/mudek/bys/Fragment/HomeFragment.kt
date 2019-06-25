@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.Toast
 import edu.ktu.mudek.R
+import edu.ktu.mudek.R.layout.*
 import edu.ktu.mudek.bys.adapters.LessonsAdapter
 import edu.ktu.mudek.bys.models.Lessons
 import edu.ktu.mudek.bys.network.BysApiClient
@@ -18,12 +19,14 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class HomeFragment : Fragment() {
 
+
+
+class HomeFragment : Fragment(){
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 
-        val rootView = inflater.inflate(R.layout.fragment_home, container, false)
+        val rootView = inflater.inflate(fragment_home, container, false)
         val recyclerView = rootView.findViewById<RecyclerView>(R.id.recyclerView)
 
         recyclerView.layoutManager = LinearLayoutManager(activity?.baseContext, LinearLayout.VERTICAL, false)
@@ -39,6 +42,16 @@ class HomeFragment : Fragment() {
 
                     val lessonsAdapter = LessonsAdapter(response.body()!!)
                     recyclerView.adapter = lessonsAdapter
+
+                        lessonsAdapter.onItemClick= { Lessons ->
+
+                            val fragment1 = LessonDetailsFragment()
+                            val fragmentManager = fragmentManager
+                            val fragmentTransaction = fragmentManager!!.beginTransaction()
+                            fragmentTransaction.replace(R.id.relativelayout, fragment1)
+                            fragmentTransaction.commit()
+                        }
+
                 }
                 else {
                     Toast.makeText(activity?.baseContext, "... which is bad :(", Toast.LENGTH_SHORT).show()
@@ -55,6 +68,7 @@ class HomeFragment : Fragment() {
                 Log.i("Call",call.toString())
                 Log.i("Call",call.request().headers().toString())
                 Log.i("Call",call.request().body().toString())
+
             }
 
         } )

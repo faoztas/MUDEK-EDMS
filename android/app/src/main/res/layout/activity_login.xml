@@ -54,6 +54,7 @@
         android:layout_toEndOf="@id/textUsername"
         android:fontFamily="sans-serif-thin"
         android:hint="314012"
+        android:singleLine="true"
         android:textAlignment="textStart"
         android:textColor="@color/colorText"
         android:textSize="20sp" />
@@ -102,6 +103,7 @@
         android:layout_toEndOf="@id/textPassword"
         android:fontFamily="sans-serif-thin"
         android:inputType="textPassword"
+        android:singleLine="true"
         android:textAlignment="textStart"
         android:textColor="@color/colorText"
         android:textSize="20sp" />

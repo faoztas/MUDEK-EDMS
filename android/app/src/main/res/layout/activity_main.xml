@@ -21,5 +21,13 @@
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header_main"
         app:menu="@menu/activity_main_drawer" />
+    <TextView
+        android:id="@+id/importedLessonId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:visibility="gone"
+        tools:visibility="gone" />
+
 
 </android.support.v4.widget.DrawerLayout>

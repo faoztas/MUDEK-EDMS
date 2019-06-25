@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Müdek e-BYS</string>
+    <string name="app_name">Müdek EDMS</string>
     <string name="app_real_name">Müdek Elektronik Belge Yönetim Sistemi</string>
 
     <string name="title_activity_main2">Main2Activity</string>
@@ -8,7 +8,7 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
-    <string name="camera_grant">Müdek e-BYS</string>
+    <string name="camera_grant">Müdek EDMS</string>
     <string name="press_again_logout">Press back again and logout</string>
 
     <string name="crop">Crop</string>
@@ -21,14 +21,14 @@
     <string name="scan">Scan</string>
 
     <string name="username">Username :</string>
-    <string name="Mudek">Müdek e-BYS</string>
+    <string name="Mudek">Müdek EDMS</string>
     <string name="mail">(@)ktu.edu.tr</string>
     <string name="password">Password :</string>
     <string name="login">LOGIN</string>
     <string name="forgot">I forgot my password.</string>
     <string name="title_activity_main">MainActivity</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_title">Hata</string>
+    <string name="nav_header_subtitle">Hata</string>
     <string name="nav_header_desc">Navigation header</string>
 
     <string name="menu_home">Home</string>

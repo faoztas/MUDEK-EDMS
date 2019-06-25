@@ -13,12 +13,8 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import edu.ktu.mudek.R
-import edu.ktu.mudek.bys.adapters.LessonsAdapter
 import edu.ktu.mudek.bys.models.AuthLogin
-import edu.ktu.mudek.bys.models.Lessons
 import edu.ktu.mudek.bys.network.BysApiClient
-import kotlinx.android.synthetic.main.activity_login.*
-import kotlinx.android.synthetic.main.fragment_home.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

@@ -6,7 +6,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object BysApiClient {
 
-    const val mainUrl = "http://192.168.2.7:8000/api/"
+    const val mainUrl = "http://mhproje.ktu.edu.tr:8000/api/"
     var userToken = ""
 
     private val okHttpClient = OkHttpClient.Builder()

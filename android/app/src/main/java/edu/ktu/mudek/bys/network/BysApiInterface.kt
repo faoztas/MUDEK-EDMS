@@ -1,6 +1,7 @@
 package edu.ktu.mudek.bys.network
 
 import edu.ktu.mudek.bys.models.*
+import okhttp3.MultipartBody
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -18,6 +19,17 @@ interface BysApiInterface {
     @GET("lessons/{id}/?format=json")
     fun getLessonDetails(@Path(
             "id") id: Int): Call<LessonDetails>
+
+    @POST("lessons/{lessonId}/?format=json")
+    @Multipart
+    fun setLessonDetails(@Path("lessonId") lessonId: Int,
+                         @Part("id") id: Int,
+                         @Part("user") user: Int,
+                         @Part("lesson_name") lessonName: String,
+                         @Part("lesson_content") lessonContent: String,
+                         @Part lessonContentFile: MultipartBody.Part,
+                         @Part("lesson_notes") lessonNotes: String,
+                         @Part lessonNotesFile: MultipartBody.Part): Call<LessonDetails>
 
     @GET("exams/?format=json")
     fun getExams(): Call<ArrayList<Exams>>

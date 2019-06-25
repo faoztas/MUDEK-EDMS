@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="bys.fragment.LessonDetailsFragment"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/lessonId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:visibility="gone"
+                tools:visibility="gone" />
+
+            <TextView
+                android:id="@+id/userId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:visibility="gone"
+                tools:visibility="gone" />
+
+            <TextView
+                android:id="@+id/lessonName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-thin"
+                android:textAlignment="center"
+                android:textColor="@color/colorTextDarkest"
+                android:textSize="32sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/lessonContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-thin"
+                android:singleLine="false"
+                android:textColor="@color/colorTextGreen"
+                android:textSize="24sp" />
+
+            <Button
+                android:id="@+id/lessonContentFileButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-thin"
+                android:onClick="addContentFile"
+                android:text="Add Content File"
+                android:textAllCaps="false"
+                android:textColor="@color/colorTextDarkest"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/lessonContentFile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-thin"
+                android:textColor="@color/colorTextDarkest"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/lessonNotes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-thin"
+                android:textColor="@color/colorTextGreen"
+                android:textSize="24sp" />
+
+            <Button
+                android:id="@+id/lessonNotesFileButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-thin"
+                android:onClick="addNotesFile"
+                android:text="Add Notes File"
+                android:textAllCaps="false"
+                android:textColor="@color/colorTextDarkest"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/lessonNotesFile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-thin"
+                android:textColor="@color/colorTextDarkest"
+                android:textSize="24sp" />
+
+            <Button
+                android:id="@+id/upload"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-thin"
+                android:onClick="upLoad"
+                android:text="Upload File"
+                android:textAllCaps="false"
+                android:textColor="@color/colorTextDarkest"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
