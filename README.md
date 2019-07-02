@@ -37,4 +37,4 @@ Bu proje Karadeniz Teknik Üniversitesi Bilgisayar Mühendisliği Bölümü Biti
 
 ## Lisans
 
-Bu proje GNU General Public License v3.0 lisasnlanmıştır. Ayrıntılar LICENSE.md dosyasındadır.
+Bu proje GNU General Public License v3.0 lisanslanmıştır. Ayrıntılar LICENSE.md dosyasındadır.
