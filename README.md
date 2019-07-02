@@ -29,6 +29,10 @@ MÜDEK kuruluşu için Akreditasyon Sistemi
 
 Bu proje Karadeniz Teknik Üniversitesi Bilgisayar Mühendisliği Bölümü Bitirme Projesi kapsamında yapılmıştır. Projenin detayları **tez.pdf** dosyası içindedir.
 
+## Ekran Görüntüleri
+
+<img src="https://github.com/frknnlzts/MUDEK-EDMS/blob/master/Android%20SS/M%C3%BCdek%20-%20EDMS%20(1).png" width="300"><img src="https://github.com/frknnlzts/MUDEK-EDMS/blob/master/Android%20SS/M%C3%BCdek%20-%20EDMS%20(2).png" width="300"><img src="https://github.com/frknnlzts/MUDEK-EDMS/blob/master/Android%20SS/M%C3%BCdek%20-%20EDMS%20(3).png" width="300"><img src="https://github.com/frknnlzts/MUDEK-EDMS/blob/master/Android%20SS/M%C3%BCdek%20-%20EDMS%20(4).png" width="300"><img src="https://github.com/frknnlzts/MUDEK-EDMS/blob/master/Android%20SS/M%C3%BCdek%20-%20EDMS%20(5).jpg" width="300"><img src="https://github.com/frknnlzts/MUDEK-EDMS/blob/master/Android%20SS/M%C3%BCdek%20-%20EDMS%20(6).jpg" width="300"><img src="https://github.com/frknnlzts/MUDEK-EDMS/blob/master/Android%20SS/M%C3%BCdek%20-%20EDMS%20(7).jpg" width="300">
+
 ## Görev Paylaşımı
 
 * Front-End Durmuş Yaşar & Furkan Anıl Öztaş
