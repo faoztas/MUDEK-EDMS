@@ -14,7 +14,7 @@ Mühendislik Eğitim Programları Değerlendirme ve Akreditasyon Derneği (MÜDE
 - [x] Rest API Desteği
 - [x] *Beta* Geliştirme Süreci (Web)
 - [x] *Beta* Geliştirme Süreci (Android)
-- [] Kararlı Sürüm
+- [ ] Kararlı Sürüm
 
 MÜDEK kuruluşu için Akreditasyon Sistemi
 
