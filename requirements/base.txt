@@ -2,7 +2,7 @@
 Django==2.1.7
 
 # Django Rest Framework
-djangorestframework==3.9.1
+djangorestframework==3.11.2
 djoser==1.4.0
 
 
